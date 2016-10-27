@@ -23,21 +23,22 @@
 </head>
 <body <?php body_class(); ?>>
     <div class="page-wrapper">
-        <header id="header" class="header">
-            <div class="container">
-                <div class="branding">
-                    <h1 class="logo">
-                        <a href="<?php echo home_url( '/' ) ?>" title="<?php echo bloginfo( 'title' ) ?>">
-                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
-                            <span class="text-highlight"><?php the_theme_setting( 'title_highlight' ) ?></span>
-                            <span class="text-bold"><?php the_theme_setting( 'title_bold' ) ?></span>
-                        </a>
-                    </h1>
-                </div><!--//branding-->
-                <?php wp_nav_menu( [
-                    'menu'          => 'header-menu',
-                    'menu_class'    => 'breadcrumb',
-                    'items_wrap'    => '<ol id="%1$s" class="%2$s">%3$s</ol>',
-                ] ) ?>
-            </div><!--//container-->
-        </header><!--//header-->
+        <?php if ( !is_front_page() ) : ?>
+            <header id="header" class="header">
+                <div class="container">
+                    <div class="branding">
+                        <h1 class="logo">
+                            <a href="<?php echo home_url( '/' ) ?>" title="<?php echo bloginfo( 'title' ) ?>">
+                                <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                                <span class="text-highlight"><?php the_theme_setting( 'title_highlight' ) ?></span><span class="text-bold"><?php the_theme_setting( 'title_bold' ) ?></span>
+                            </a>
+                        </h1>
+                    </div><!--//branding-->
+                    <?php wp_nav_menu( [
+                        'menu'          => 'header-menu',
+                        'menu_class'    => 'breadcrumb',
+                        'items_wrap'    => '<ol id="%1$s" class="%2$s">%3$s</ol>',
+                    ] ) ?>
+                </div><!--//container-->
+            </header><!--//header-->
+        <?php endif ?>

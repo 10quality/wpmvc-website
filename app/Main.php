@@ -15,27 +15,26 @@ class Main extends Bridge
 {
     /**
      * Declaration of public wordpress hooks.
-     * @since fill version
+     * @since 1.0.0
      */
     public function init()
     {
-        // Sample
-        // $this->add_action( 'the_content', 'PostController@filter' );
+        //$this->add_model('Page');
         // Ayuco: addition 2016-10-25 06:40 pm
         $this->add_action('customize_register', 'CustomizerController@register');
         // Ayuco: addition 2016-10-25 06:54 pm
         $this->add_action('customize_save', 'CustomizerController@save');
         // Ayuco: addition 2016-10-25 07:07 pm
         $this->add_action('init', 'ThemeController@menu');
+        // Ayuco: addition 2016-10-27 12:23 am
+        $this->add_action('wp_enqueue_scripts', 'ThemeController@enqueue');
     }
     /**
      * Declaration of admin only wordpress hooks.
      * For Wordpress admin dashboard.
-     * @since fill version
+     * @since 1.0.0
      */
     public function on_admin()
     {
-        // Sample
-        // $this->add_action( 'save_post', 'PostController@save' );
     }
 }

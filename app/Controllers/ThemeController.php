@@ -49,8 +49,23 @@ class ThemeController extends Controller
      */
     public function menu()
     {
-        register_nav_menus( [
-            'header-menu'   => __( 'Header Menu', 'wpmvc' ),
-        ] );
+        register_nav_menus(['header-menu' => __('Header Menu', 'wpmvc')]);
+    }
+    /**
+     * Action "wp_enqueue_scripts"
+     * Wordpress hook
+     * Ayuco: addition 2016-10-27 12:23 am
+     * @since fill
+     *
+     * @return
+     */
+    public function enqueue()
+    {
+        wp_enqueue_style(
+            'app',
+            get_template_directory_uri().'/assets/css/app.css',
+            [],
+            '1.0.0'
+        );
     }
 }
