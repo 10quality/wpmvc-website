@@ -4,7 +4,7 @@
         <div class="branding">
             <h1 class="logo">
                 <span aria-hidden="true" class="icon_documents_alt icon"></span>
-                <span class="text-highlight"><?= $page->header_hightlight ?></span><span class="text-bold"><?= $page->header_bold ?></span>
+                <span class="text-highlight"><?= $page->header_highlight ?></span><span class="text-bold"><?= $page->header_bold ?></span>
             </h1>
         </div><!--//branding-->
         <div class="tagline">

@@ -19,15 +19,14 @@ class Main extends Bridge
      */
     public function init()
     {
-        //$this->add_model('Page');
         // Ayuco: addition 2016-10-25 06:40 pm
         $this->add_action('customize_register', 'CustomizerController@register');
         // Ayuco: addition 2016-10-25 06:54 pm
         $this->add_action('customize_save', 'CustomizerController@save');
         // Ayuco: addition 2016-10-25 07:07 pm
         $this->add_action('init', 'ThemeController@menu');
-        // Ayuco: addition 2016-10-27 12:23 am
-        $this->add_action('wp_enqueue_scripts', 'ThemeController@enqueue');
+        // Ayuco: addition 2016-10-27 03:11 pm
+        $this->add_model('Page');
     }
     /**
      * Declaration of admin only wordpress hooks.

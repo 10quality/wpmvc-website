@@ -29,12 +29,12 @@ class Page extends Model
      * @var array
      */
     protected $aliases = [
-        'header_hightlight'     => 'meta_header_hightlight',
+        'header_highlight'      => 'meta_header_highlight',
         'header_bold'           => 'meta_header_bold',
-        'header_message'        => 'meta_header_message',
+        'header_tagline'        => 'meta_header_tagline',
         'cards_title'           => 'meta_cards_title',
         'cards'                 => 'meta_cards',
-        'download_url'          => 'mate_download_url',
+        'download_url'          => 'meta_download_url',
     ];
 
     /**
@@ -42,7 +42,7 @@ class Page extends Model
      * @since 1.0.0
      * @var array
      */
-    //protected $registry = [];
+    protected $registry = [];
 
     /**
      * Model regitry.
@@ -57,7 +57,7 @@ class Page extends Model
      * @var array
      */
     protected $registry_metabox = [
-        'title'     => 'PrettyDocs format',
+        'title'     => 'Homepage Properties',
         'context'   => 'normal',
         'priority'  => 'default',
     ];
