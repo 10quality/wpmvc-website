@@ -44,6 +44,8 @@ class Page extends Model
         'has_sidebar'           => 'func_has_sidebar',
         'formatted_date'        => 'func_get_date',
         'formatted_modified'    => 'func_get_modified',
+        'content'               => 'func_get_content',
+        'cards_json'            => 'func_get_cards_json',
     ];
 
     /**
@@ -102,5 +104,27 @@ class Page extends Model
     public function has_sidebar()
     {
         return $this->sidebar && $this->sidebar == 1;
+    }
+
+    /**
+     * Returns content with filters applied.
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    public function get_content()
+    {
+        return apply_filters( 'the_content', $this->post_content );
+    }
+
+    /**
+     * Returns cards as readable json object for vue.
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    public function get_cards_json()
+    {
+        return urlencode( json_encode( $this->cards ) );
     }
 }

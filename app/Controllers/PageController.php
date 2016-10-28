@@ -2,6 +2,7 @@
 
 namespace WPMVCWebsite\Controllers;
 
+use WPMVC\Request;
 use WPMVC\Cache;
 use WPMVCWebsite\Models\Page;
 use WPMVC\MVC\Controllers\ModelController as Controller;
@@ -45,6 +46,24 @@ class PageController extends Controller
     public function on_save( &$page )
     {
         $page->header_tagline = str_replace( "\r\n", '', $page->header_tagline );
+        // Get cards
+        $cards = [];
+        $icons = Request::input('meta_card_icons', []);
+        $titles = Request::input('meta_card_titles', []);
+        $colors = Request::input('meta_card_colors', []);
+        $urls = Request::input('meta_card_urls', []);
+        $descriptions = Request::input('meta_card_descriptions', []);
+        foreach ( Request::input('meta_cards', []) as $index ) {
+            $cards[] = [
+                'icon'  => isset( $icons[$index] ) ? $icons[$index] : '',
+                'title' => isset( $titles[$index] ) ? $titles[$index] : '',
+                'color' => isset( $colors[$index] ) ? $colors[$index] : '',
+                'url'   => isset( $urls[$index] ) ? $urls[$index] : '#',
+                'description' => isset( $descriptions[$index] ) ? $descriptions[$index] : '',
+            ];
+        }
+        $page->cards = $cards;
+        // Clear cache
         Cache::forget( 'p'.$page->ID.'_color' );
     }
 
@@ -64,6 +83,15 @@ class PageController extends Controller
             'body-pink'     => 'Pink',
             'body-purple'   => 'Purple',
             'body-red'      => 'Red',
+        ];
+        $page->card_colors = [
+            'blue'          => 'Blue',
+            'primary'       => 'Cyan',
+            'green'         => 'Green',
+            'orange'        => 'Orange',
+            'pink'          => 'Pink',
+            'purple'        => 'Purple',
+            'red'           => 'Red',
         ];
     }
 

@@ -49,6 +49,7 @@ class ThemeController extends Controller
     {
         register_nav_menus([
             'header-menu'   => __('Header Menu', 'wpmvc'),
+            'docs-menu'     => __('Documentation Menu', 'wpmvc'),
             'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'),
             'footer-menu-2' => __('Footer 2 Menu', 'wpmvc'),
         ]);

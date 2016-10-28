@@ -8,6 +8,9 @@
 /assets/js
 /assets/fonts
 /assets/raw/css
+/assets/raw/js/external
+/assets/admin/js
+/assets/admin/raw/js/external
 
 # Generated tmp:
 /builds

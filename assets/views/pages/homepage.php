@@ -28,7 +28,7 @@
         <div class="container">
             <h2 class="title"><?= $page->cards_title ?></h2>
             <div class="intro">
-                <?php the_content() ?>
+                <?= $page->content ?>
                 <?php if ( $page->download_url ) : ?>
                     <div class="cta-container">
                         <a class="btn btn-primary btn-cta"
@@ -40,17 +40,17 @@
                     </div><!--//cta-container-->
                 <?php endif ?>
             </div><!--//intro-->
-            <?php if ( $page->carts && count( $page->carts ) > 1) : ?>
+            <?php if ( $page->cards && count( $page->cards ) > 0) : ?>
                 <div id="cards-wrapper" class="cards-wrapper row">
-                    <?php foreach ( $page->carts as $cart ) : ?>
-                        <div class="item item-<?= $cart['color'] ?> col-md-4 col-sm-6 col-xs-6">
+                    <?php foreach ( $page->cards as $card ) : ?>
+                        <div class="item item-<?= $card->color ?> col-md-4 col-sm-6 col-xs-6">
                             <div class="item-inner">
                                 <div class="icon-holder">
-                                    <i class="icon fa <?= $cart['icon'] ?>"></i>
+                                    <i class="icon fa <?= $card->icon ?>"></i>
                                 </div><!--//icon-holder-->
-                                <h3 class="title"><?= $cart['title'] ?></h3>
-                                <p class="intro"><?= $cart['intro'] ?></p>
-                                <a class="link" href="<?= $cart['url'] ?>"><span></span></a>
+                                <h3 class="title"><?= $card->title ?></h3>
+                                <p class="intro"><?= $card->description ?></p>
+                                <a class="link" href="<?= $card->url ?>"><span></span></a>
                             </div><!--//item-inner-->
                         </div><!--//item-->
                     <?php endforeach ?>

@@ -34,7 +34,7 @@
                             class="col-md-12"
                         <?php endif ?>
                     >
-                        <?= $page->post_content ?>
+                        <?= $page->content ?>
                         <?php do_action( 'wpmvc_after_page' ) ?>
                     </div>
 
