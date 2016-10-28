@@ -8,7 +8,10 @@
  * @version fill
  */
 ?>
-<h3>Download button</h3>
+
+<h3>Homepage</h3>
+
+<h4>Download button</h4>
 <table class="form-table">
 
     <tr valign="top">
@@ -16,6 +19,7 @@
         <td>
             <input type="text"
                 name="meta_download_url"
+                class="regular-text"
                 value="<?php echo $model->download_url ?>"
             />
         </td>
@@ -23,7 +27,7 @@
 
 </table>
 
-<h3>Header</h3>
+<h4>Header</h4>
 <table class="form-table">
 
     <tr valign="top">
@@ -31,6 +35,7 @@
         <td>
             <input type="text"
                 name="meta_header_highlight"
+                class="regular-text"
                 value="<?php echo $model->header_highlight ?>"
             />
         </td>
@@ -41,6 +46,7 @@
         <td>
             <input type="text"
                 name="meta_header_bold"
+                class="regular-text"
                 value="<?php echo $model->header_bold ?>"
             />
         </td>
@@ -51,13 +57,14 @@
         <td>
             <?php wp_editor( $model->header_tagline, 'header-tagline', [
                 'textarea_name' => 'meta_header_tagline',
+                'wpautop'       => false,
             ] ) ?>
         </td>
     </tr>
 
 </table>
 
-<h3>Cards</h3>
+<h4>Cards</h4>
 <table class="form-table">
 
     <tr valign="top">
@@ -65,8 +72,40 @@
         <td>
             <input type="text"
                 name="meta_cards_title"
+                class="regular-text"
                 value="<?php echo $model->cards_title ?>"
             />
+        </td>
+    </tr>
+
+</table>
+
+<hr>
+
+<h3>Page</h3>
+<table class="form-table">
+
+    <tr valign="top">
+        <th scope="row">Icon</th>
+        <td>
+            <input type="text"
+                name="meta_icon"
+                value="<?php echo $model->meta_icon ?>"
+            />
+        </td>
+    </tr>
+
+    <tr valign="top">
+        <th scope="row">Sidebar</th>
+        <td>
+            <input type="checkbox"
+                name="meta_sidebar"
+                <?php if ( $model->has_sidebar ) : ?>checked<?php endif ?>
+                value="1"
+            />
+            <span class="description">
+                Includes right sidebar.
+            </span>
         </td>
     </tr>
 

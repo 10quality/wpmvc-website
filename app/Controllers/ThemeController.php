@@ -43,12 +43,41 @@ class ThemeController extends Controller
      * Action "init"
      * Wordpress hook
      * Ayuco: addition 2016-10-25 07:07 pm
-     * @since fill
-     *
-     * @return
+     * @since 1.0.0
      */
     public function menu()
     {
         register_nav_menus(['header-menu' => __('Header Menu', 'wpmvc')]);
+    }
+    /**
+     * Action "body_class"
+     * Wordpress hook
+     * Ayuco: addition 2016-10-27 05:40 pm
+     * @since 1.0.0
+     *
+     * @return array
+     */
+    public function body_class($classes)
+    {
+        if (is_front_page()) {
+            $classes[] = 'landing-page';
+        }
+        return $classes;
+    }
+    /**
+     * Action "widgets_init"
+     * Wordpress hook
+     * Ayuco: addition 2016-10-27 06:25 pm
+     * @since 1.0.0
+     */
+    public function sidebars()
+    {
+        register_sidebar([
+            'name'          => 'Pages',
+            'id'            => 'wpmvc-page-right',
+            'description'   => 'Sidebar located on the right side of pages, when their flag is activated.',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+        ]);
     }
 }

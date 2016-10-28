@@ -1,3 +1,13 @@
+<?php
+/**
+ * Page view.
+ * Homepage template.
+ *
+ * @package WPMVCWebsite
+ * @author Alejandro Mostajo <info@10quality.com>
+ * @version 1.0.0
+ */
+?>
 <?php get_header() ?>
 <header class="header text-center">
     <div class="container">

@@ -27,6 +27,10 @@ class Main extends Bridge
         $this->add_action('init', 'ThemeController@menu');
         // Ayuco: addition 2016-10-27 03:11 pm
         $this->add_model('Page');
+        // Ayuco: addition 2016-10-27 05:40 pm
+        $this->add_filter('body_class', 'ThemeController@body_class');
+        // Ayuco: addition 2016-10-27 06:25 pm
+        $this->add_action('widgets_init', 'ThemeController@sidebars');
     }
     /**
      * Declaration of admin only wordpress hooks.
