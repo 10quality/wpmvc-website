@@ -40,6 +40,7 @@ class Page extends Model
         'download_url'          => 'meta_download_url',
         'icon'                  => 'meta_icon',
         'sidebar'               => 'meta_sidebar',
+        'theme_color'           => 'meta_theme_color',
         'has_sidebar'           => 'func_has_sidebar',
         'formatted_date'        => 'func_get_date',
         'formatted_modified'    => 'func_get_modified',

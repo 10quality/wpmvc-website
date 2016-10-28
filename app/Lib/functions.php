@@ -36,3 +36,33 @@ if ( !function_exists( 'the_theme_setting' ) ) {
         echo get_theme_setting( $key );
     }
 }
+
+if ( !function_exists( 'get_the_color' ) ) {
+    /**
+     * Returns the theme color of an object. 
+     * @since 1.0.0
+     *
+     * @param int $ID Page ID.
+     *
+     * @return string
+     */
+    function get_the_color( $ID = null )
+    {
+        global $theme;
+        return $theme->{'_c_return_PageController@get_color'}( $ID );
+    }
+}
+
+if ( !function_exists( 'theme' ) ) {
+    /**
+     * Returns the theme object. 
+     * @since 1.0.0
+     *
+     * @return object
+     */
+    function theme()
+    {
+        global $theme;
+        return $theme;
+    }
+}

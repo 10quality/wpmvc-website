@@ -35,16 +35,20 @@
                         <?php endif ?>
                     >
                         <?= $page->post_content ?>
+                        <?php do_action( 'wpmvc_after_page' ) ?>
                     </div>
 
                     <?php if ( $page->has_sidebar ) : ?>
                         <div class="col-md-3 col-sm-4">
                             <div class="widgets-wrapper">
-                                <?php dynamic_sidebar('wpmvc-page-right') ?>
+                                <?php if ( is_active_sidebar( 'wpmvc-page-right' ) ) : ?>
+                                    <?php dynamic_sidebar( 'wpmvc-page-right' ) ?>
+                                <?php else : ?>
+                                    <?php theme()->view( 'misc.no-widgets' ) ?>
+                                <?php endif ?>
                             </div>
                         </div>
                     <?php endif ?>
-
                 </div>
             </div>
 

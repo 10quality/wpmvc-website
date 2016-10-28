@@ -8,6 +8,23 @@
  * @version fill
  */
 ?>
+<h3>General</h3>
+<table class="form-table">
+
+    <tr valign="top">
+        <th scope="row">Theme color</th>
+        <td>
+            <select name="meta_theme_color">
+                <?php foreach ( $model->colors as $key => $value ) : ?>
+                    <option value="<?= $key ?>" <?php if ( $model->theme_color === $key ) : ?>selected<?php endif ?>>
+                        <?= $value ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+        </td>
+    </tr>
+
+</table>
 
 <h3>Homepage</h3>
 
@@ -104,7 +121,7 @@
                 value="1"
             />
             <span class="description">
-                Includes right sidebar.
+                Include right sidebar.
             </span>
         </td>
     </tr>

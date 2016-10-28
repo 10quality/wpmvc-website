@@ -25,11 +25,35 @@ class CustomizerController extends Controller
     public function register($wp_customize)
     {
         // Title highlight
-        $wp_customize->add_setting('wpmvc[title_highlight]', ['type' => 'option']);
-        $wp_customize->add_control('wpmvc[title_highlight]', ['type' => 'text', 'label' => 'Title\'s highlight', 'section' => 'title_tagline', 'settings' => 'wpmvc[title_highlight]', 'priority' => 15]);
+        $wp_customize->add_setting(
+            'wpmvc[title_highlight]',
+            ['type' => 'option']
+        );
+        $wp_customize->add_control(
+            'wpmvc[title_highlight]',
+            [
+                'type'      => 'text',
+                'label'     => 'Title\'s highlight',
+                'section'   => 'title_tagline',
+                'settings'  => 'wpmvc[title_highlight]',
+                'priority'  => 15
+            ]
+        );
         // Title boold
-        $wp_customize->add_setting('wpmvc[title_bold]', ['type' => 'option']);
-        $wp_customize->add_control('wpmvc[title_bold]', ['type' => 'text', 'label' => 'Title\'s bold', 'section' => 'title_tagline', 'settings' => 'wpmvc[title_bold]', 'priority' => 16]);
+        $wp_customize->add_setting(
+            'wpmvc[title_bold]',
+            ['type' => 'option']
+        );
+        $wp_customize->add_control(
+            'wpmvc[title_bold]',
+            [
+                'type'      => 'text',
+                'label'     => 'Title\'s bold',
+                'section'   => 'title_tagline',
+                'settings'  => 'wpmvc[title_bold]',
+                'priority'  => 16
+            ]
+        );
     }
     /**
      * Flush settings keys from cache.

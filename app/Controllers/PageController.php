@@ -2,6 +2,7 @@
 
 namespace WPMVCWebsite\Controllers;
 
+use WPMVC\Cache;
 use WPMVCWebsite\Models\Page;
 use WPMVC\MVC\Controllers\ModelController as Controller;
 /**
@@ -44,5 +45,47 @@ class PageController extends Controller
     public function on_save( &$page )
     {
         $page->header_tagline = str_replace( "\r\n", '', $page->header_tagline );
+        Cache::forget( 'p'.$page->ID.'_color' );
+    }
+
+    /**
+     * Triggers on metabox event to add custom theme color values.
+     * @since 1.0.0
+     *
+     * @param Page $model Page model.
+     */
+    public function on_metabox( &$page )
+    {
+        $page->colors = [
+            'body-blue'     => 'Blue',
+            ''              => 'Cyan',
+            'body-green'    => 'Green',
+            'body-orange'   => 'Orange',
+            'body-pink'     => 'Pink',
+            'body-purple'   => 'Purple',
+            'body-red'      => 'Red',
+        ];
+    }
+
+    /**
+     * Returns the theme color selected for a especific page.
+     * @since 1.0.0
+     *
+     * @param int $ID Page ID.
+     *
+     * @return string
+     */
+    public function get_color( $ID = null )
+    {
+        if ( empty( $ID ) )
+            $ID = get_the_ID();
+        return Cache::remember(
+            'p'.$ID.'_color',
+            60, // Hourly
+            function() use( &$ID ) {
+                $page = Page::find( $ID );
+                return $page->theme_color ? $page->theme_color : '';
+            }
+        );
     }
 }

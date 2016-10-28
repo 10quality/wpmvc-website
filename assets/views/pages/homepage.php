@@ -62,4 +62,6 @@
     <?php endwhile ?>
 <?php endif ?>
 
+<?php do_action( 'wpmvc_after_homepage' ) ?>
+
 <?php get_footer() ?>

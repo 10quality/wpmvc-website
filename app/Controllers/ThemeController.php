@@ -47,7 +47,11 @@ class ThemeController extends Controller
      */
     public function menu()
     {
-        register_nav_menus(['header-menu' => __('Header Menu', 'wpmvc')]);
+        register_nav_menus([
+            'header-menu'   => __('Header Menu', 'wpmvc'),
+            'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'),
+            'footer-menu-2' => __('Footer 2 Menu', 'wpmvc'),
+        ]);
     }
     /**
      * Action "body_class"
@@ -62,6 +66,7 @@ class ThemeController extends Controller
         if (is_front_page()) {
             $classes[] = 'landing-page';
         }
+        $classes[] = get_the_color();
         return $classes;
     }
     /**
@@ -76,6 +81,14 @@ class ThemeController extends Controller
             'name'          => 'Pages',
             'id'            => 'wpmvc-page-right',
             'description'   => 'Sidebar located on the right side of pages, when their flag is activated.',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+        ]);
+
+        register_sidebar([
+            'name'          => 'Footer',
+            'id'            => 'wpmvc-footer',
+            'description'   => 'Sidebar located at the footer of the website.',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
         ]);
