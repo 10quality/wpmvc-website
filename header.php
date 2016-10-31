@@ -42,3 +42,4 @@
                 </div><!--//container-->
             </header><!--//header-->
         <?php endif ?>
+        <div id="site-body">

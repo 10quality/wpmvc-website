@@ -1,7 +1,7 @@
 {
-  "name": "MyApp",
+  "name": "wpmvc-website",
   "version": "1.0.0",
-  "description": "Fill description here",
+  "description": "Wordpress MVC website theme, based on PrettyDocs template.",
   "prestyles": [
     "sass",
     "less"
@@ -17,6 +17,7 @@
     "gulp-less": "^3.1.0",
     "gulp-wpmvc": "^1.0.*",
     "jquery-match-height": "^0.7.0",
+    "jquery.scrollto": "^2.1.2",
     "vue": "^2.0.3"
   }
 }

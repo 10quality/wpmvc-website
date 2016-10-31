@@ -79,6 +79,7 @@ gulp.task('injectedjs', ['adminscripts'], function() {
             './node_modules/vue/dist/vue.js',
             './node_modules/bootstrap/dist/js/bootstrap.min.js',
             './node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
+            './node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         ])
         .pipe(gulp.dest('./assets/raw/js/external'));
 });

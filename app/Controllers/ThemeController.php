@@ -47,12 +47,7 @@ class ThemeController extends Controller
      */
     public function menu()
     {
-        register_nav_menus([
-            'header-menu'   => __('Header Menu', 'wpmvc'),
-            'docs-menu'     => __('Documentation Menu', 'wpmvc'),
-            'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'),
-            'footer-menu-2' => __('Footer 2 Menu', 'wpmvc'),
-        ]);
+        register_nav_menus(['header-menu' => __('Header Menu', 'wpmvc'), 'docs-menu' => __('Documentation Menu', 'wpmvc'), 'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'), 'footer-menu-2' => __('Footer 2 Menu', 'wpmvc')]);
     }
     /**
      * Action "body_class"
@@ -78,20 +73,21 @@ class ThemeController extends Controller
      */
     public function sidebars()
     {
-        register_sidebar([
-            'name'          => 'Pages',
-            'id'            => 'wpmvc-page-right',
-            'description'   => 'Sidebar located on the right side of pages, when their flag is activated.',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-        ]);
-
-        register_sidebar([
-            'name'          => 'Footer',
-            'id'            => 'wpmvc-footer',
-            'description'   => 'Sidebar located at the footer of the website.',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-        ]);
+        register_sidebar(['name' => 'Pages', 'id' => 'wpmvc-page-right', 'description' => 'Sidebar located on the right side of pages, when their flag is activated.', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>']);
+        register_sidebar(['name' => 'Footer', 'id' => 'wpmvc-footer', 'description' => 'Sidebar located at the footer of the website.', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>']);
+    }
+    /**
+     * Filter "nav_menu_css_class"
+     * Wordpress hook
+     * Ayuco: addition 2016-10-28 06:47 pm
+     * @since fill
+     *
+     * @return
+     */
+    public function filter_nav_menu_css($classes)
+    {
+        if (in_array('current-menu-item', $classes))
+            $classes[] = 'active';
+        return $classes;
     }
 }

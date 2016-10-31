@@ -31,6 +31,12 @@ class Main extends Bridge
         $this->add_filter('body_class', 'ThemeController@body_class');
         // Ayuco: addition 2016-10-27 06:25 pm
         $this->add_action('widgets_init', 'ThemeController@sidebars');
+        // Ayuco: addition 2016-10-28 06:47 pm
+        $this->add_filter('nav_menu_css_class', 'ThemeController@filter_nav_menu_css');
+        // Ayuco: addition 2016-10-28 07:01 pm
+        $this->add_shortcode('docs-section', 'ShortController@docs_section');
+        // Ayuco: addition 2016-10-31 09:44 am
+        $this->add_model('Code');
     }
     /**
      * Declaration of admin only wordpress hooks.
@@ -41,5 +47,7 @@ class Main extends Bridge
     {
         // Ayuco: addition 2016-10-28 12:54 pm
         $this->add_action('admin_enqueue_scripts', 'AdminController@enqueue');
+        // Ayuco: addition 2016-10-31 10:03 am
+        $this->add_action('add_meta_boxes', 'AdminController@metaboxes');
     }
 }

@@ -36,9 +36,9 @@
                 <div class="doc-sidebar hidden-xs">
                     <nav id="doc-nav">
                         <?php wp_nav_menu( [
-                            'menu'          => 'docs-menu',
-                            'menu_class'    => 'nav doc-menu',
-                            'items_wrap'    => '<ul id="doc-menu" class="%2$s" data-spy="affix">%3$s</ul>',
+                            'theme_location'    => 'docs-menu',
+                            'menu_class'        => 'nav doc-menu',
+                            'items_wrap'        => '<ul id="doc-menu" class="%2$s" data-spy="affix">%3$s</ul>',
                         ] ) ?>
                     </nav>
                 </div><!--//doc-sidebar-->

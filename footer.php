@@ -7,7 +7,8 @@
  * @version 1.0.0
  */
 ?>
-    </div>
+        </div><!--.site-body-->
+    </div><!--.page-wrapper-->
     <div class="footer-bar">
         <div class="container">
             <div class="row">
