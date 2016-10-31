@@ -34,11 +34,15 @@ class Main extends Bridge
         // Ayuco: addition 2016-10-28 06:47 pm
         $this->add_filter('nav_menu_css_class', 'ThemeController@filter_nav_menu_css');
         // Ayuco: addition 2016-10-28 07:01 pm
-        $this->add_shortcode('docs-section', 'ShortController@docs_section');
+        $this->add_shortcode('docs-section', 'ShortcodeController@docs_section');
         // Ayuco: addition 2016-10-31 09:44 am
         $this->add_model('Code');
         // Ayuco: addition 2016-10-31 11:54 am
         $this->add_shortcode('code', 'CodeController@shortcode');
+        // Ayuco: addition 2016-10-31 12:47 pm
+        $this->add_shortcode('code-line', 'ShortcodeController@code_line');
+        // Ayuco: addition 2016-10-31 02:11 pm
+        $this->add_shortcode('callout', 'ShortcodeController@callout');
     }
     /**
      * Declaration of admin only wordpress hooks.
