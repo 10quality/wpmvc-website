@@ -24,18 +24,18 @@
                 <div class="col col-sm-3">
                     <small>
                         <?php wp_nav_menu( [
-                            'menu'          => 'footer-menu-1',
-                            'menu_class'    => 'links',
-                            'items_wrap'    => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            'theme_location'    => 'footer-menu-1',
+                            'menu_class'        => 'links',
+                            'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                         ] ) ?>
                     </small>
                 </div>
                 <div class="col col-sm-3">
                     <small>
                         <?php wp_nav_menu( [
-                            'menu'          => 'footer-menu-2',
-                            'menu_class'    => 'links',
-                            'items_wrap'    => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            'theme_location'    => 'footer-menu-2',
+                            'menu_class'        => 'links',
+                            'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                         ] ) ?>
                     </small>
                 </div>

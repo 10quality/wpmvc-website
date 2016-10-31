@@ -35,9 +35,9 @@
                         </h1>
                     </div><!--//branding-->
                     <?php wp_nav_menu( [
-                        'menu'          => 'header-menu',
-                        'menu_class'    => 'breadcrumb',
-                        'items_wrap'    => '<ol id="%1$s" class="%2$s">%3$s</ol>',
+                        'theme_location'    => 'header-menu',
+                        'menu_class'        => 'breadcrumb',
+                        'items_wrap'        => '<ol id="%1$s" class="%2$s">%3$s</ol>',
                     ] ) ?>
                 </div><!--//container-->
             </header><!--//header-->
