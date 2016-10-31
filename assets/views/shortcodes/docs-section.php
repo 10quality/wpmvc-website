@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 ?>
-<div id="<?= $attributes['id'] ?>" class="section-block">
+<div id="<?= $attributes['id'] ?>" class="doc-section">
     <h3 class="block-title"><?= $attributes['title'] ?></h3>
-    <?= $content ?>
+    <?= do_shortcode( $content ) ?>
 </div>

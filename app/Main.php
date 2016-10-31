@@ -37,6 +37,8 @@ class Main extends Bridge
         $this->add_shortcode('docs-section', 'ShortController@docs_section');
         // Ayuco: addition 2016-10-31 09:44 am
         $this->add_model('Code');
+        // Ayuco: addition 2016-10-31 11:54 am
+        $this->add_shortcode('code', 'CodeController@shortcode');
     }
     /**
      * Declaration of admin only wordpress hooks.

@@ -17,6 +17,9 @@ class ShortController extends Controller
      * Ayuco: addition 2016-10-28 07:04 pm
      * @since 1.0.0
      *
+     * @param array  $atts    Attributes.
+     * @param string $content Shortcode content.
+     *
      * @return view
      */
     public function docs_section($atts, $content = '')
@@ -25,7 +28,6 @@ class ShortController extends Controller
             'attributes'    => shortcode_atts( [
                                 'id'        => 'step'.uniqid(),
                                 'title'     => 'Section',
-                                // ...etc
                             ], $atts ),
             'content'       => $content,
         ]);

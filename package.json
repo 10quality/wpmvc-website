@@ -18,6 +18,7 @@
     "gulp-wpmvc": "^1.0.*",
     "jquery-match-height": "^0.7.0",
     "jquery.scrollto": "^2.1.2",
+    "prismjs": "^1.5.1",
     "vue": "^2.0.3"
   }
 }

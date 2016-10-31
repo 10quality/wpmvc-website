@@ -34,7 +34,7 @@
         $el.init = function()
         {
             // Get sections
-            $('.section-block').each(function (index) {
+            $('.doc-section').each(function (index) {
                 $el.data.sections.push({
                     id: $(this).attr('id'),
                     title: $(this).find('.block-title').text(),

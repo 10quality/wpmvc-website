@@ -32,12 +32,14 @@ var codeEditor = undefined;
          */
         $el.init = function()
         {
-            $el.language = $el.data('language');
-            codeEditor = ace.edit($el.attr('id'));
-            codeEditor.setTheme('ace/theme/monokai');
-            codeEditor.getSession().setMode('ace/mode/'+$el.language);
-            codeEditor.on('change', $el.onChange);
-            codeEditor.setValue($($el.data('listener')).val());
+            if ($el.length > 0) {
+                $el.language = $el.data('language');
+                codeEditor = ace.edit($el.attr('id'));
+                codeEditor.setTheme('ace/theme/monokai');
+                codeEditor.getSession().setMode('ace/mode/'+$el.language);
+                codeEditor.on('change', $el.onChange);
+                codeEditor.setValue($($el.data('listener')).val());
+            }
         };
         /**
          * On Change event. 

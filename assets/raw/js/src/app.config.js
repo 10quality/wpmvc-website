@@ -19,4 +19,4 @@ var vue = {
  * Turn on dev tools.
  * @since 1.0.0
  */
-Vue.config.devtools = true;
+//Vue.config.devtools = true;
