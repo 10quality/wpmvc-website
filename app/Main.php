@@ -43,6 +43,8 @@ class Main extends Bridge
         $this->add_shortcode('code-line', 'ShortcodeController@code_line');
         // Ayuco: addition 2016-10-31 02:11 pm
         $this->add_shortcode('callout', 'ShortcodeController@callout');
+        // Ayuco: addition 2016-11-07 09:08 pm
+        $this->add_action('init', 'AppController@taxonomies');
     }
     /**
      * Declaration of admin only wordpress hooks.

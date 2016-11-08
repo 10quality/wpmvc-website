@@ -9,8 +9,8 @@ use WPMVC\MVC\Controllers\ModelController as Controller;
  * CodeController controller.
  * Generated with ayuco.
  *
- * @author fill
- * @version fill
+ * @author Alejandro Mostajo <info@10quality.com>
+ * @version 1.0.0
  */
 class CodeController extends Controller
 {
