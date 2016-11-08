@@ -27,10 +27,21 @@ wpmvc(gulp, config);
 // START - CUSTOM TASKS
 
 /**
+ * Copies CSS components to assets folder.
+ * @since 1.0.1
+ */
+gulp.task('injectedcsscomp', function() {
+    return gulp.src([
+            './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css',
+        ])
+        .pipe(gulp.dest('./assets/raw/css/components'));
+});
+
+/**
  * Copies CSS dependencies to assets folder.
  * @since 1.0.1
  */
-gulp.task('injectedcss', function() {
+gulp.task('injectedcss', ['injectedcsscomp'], function() {
     return gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.min.css',
             './node_modules/font-awesome/css/font-awesome.min.css',
@@ -72,12 +83,14 @@ gulp.task('adminscripts', ['injectedadminjs'], function() {
 });
 
 /**
- * Copies JS to assets folder.
+ * Copies JS components to assets folder.
  * @since 1.0.1
  */
 gulp.task('injectedjscomp', ['adminscripts'], function() {
     return gulp.src([
             './node_modules/prismjs/components/prism-php.min.js',
+            './node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js',
+            './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js',
         ])
         .pipe(gulp.dest('./assets/raw/js/external/components'));
 });

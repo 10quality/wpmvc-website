@@ -12,7 +12,7 @@
         <?php if ( $title ) : ?>
             <h6><?= $title ?></h6>
         <?php endif ?>
-        <pre class="language-<?= $code->language ?>">
+        <pre class="line-numbers language-<?= $code->language ?>">
             <code><?= htmlentities( $code->source ) ?></code>
         </pre>
     </div>

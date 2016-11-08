@@ -18,11 +18,16 @@ class AdminController extends Controller
      * Wordpress hook
      * Ayuco: addition 2016-10-28 12:54 pm
      * @since 1.0.0
+     *
+     * @param object $config App configuration.
      */
-    public function enqueue()
+    public function enqueue($config = [])
     {
-        wp_enqueue_script('ace', 'https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js', [], '1.2.4', true);
-        wp_enqueue_script('admin-app', assets_url('admin/js/app.js', __DIR__), ['ace', 'jquery'], '1.0.0', true);
+        $screen = get_current_screen();
+        if (in_array($screen->base, $config->get('vue.admin_screens'))) {
+            wp_enqueue_script('ace', 'https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js', [], '1.2.4', true);
+            wp_enqueue_script('admin-app', assets_url('admin/js/app.js', __DIR__), ['ace', 'jquery'], '1.0.0', true);
+        }
     }
     /**
      * Action "add_meta_boxes"

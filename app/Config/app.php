@@ -65,4 +65,14 @@ return [
 
     'addons' => [],
 
+    // Vue sttings
+    'vue' => [
+
+        // Supported admin base screen
+        'admin_screens' => [
+            'post',
+        ],
+
+    ],
+
 ];

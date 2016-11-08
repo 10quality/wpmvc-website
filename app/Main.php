@@ -52,7 +52,7 @@ class Main extends Bridge
     public function on_admin()
     {
         // Ayuco: addition 2016-10-28 12:54 pm
-        $this->add_action('admin_enqueue_scripts', 'AdminController@enqueue');
+        $this->add_action('admin_enqueue_scripts', 'AdminController@enqueue', [$this->config]);
         // Ayuco: addition 2016-10-31 10:03 am
         $this->add_action('add_meta_boxes', 'AdminController@metaboxes');
     }
