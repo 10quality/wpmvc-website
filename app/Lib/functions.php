@@ -10,7 +10,9 @@
  * Theme support.
  * @since 1.0.0
  */
-add_theme_support( 'post-thumbnails' );
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+}
 
 if ( !function_exists( 'get_theme_setting' ) ) {
     /**
