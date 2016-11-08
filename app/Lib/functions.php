@@ -6,6 +6,12 @@
  * @version 1.0.0
  */
 
+/**
+ * Theme support.
+ * @since 1.0.0
+ */
+add_theme_support( 'post-thumbnails' );
+
 if ( !function_exists( 'get_theme_setting' ) ) {
     /**
      * Returns a theme setting. 
