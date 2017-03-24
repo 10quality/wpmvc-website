@@ -8,7 +8,7 @@
         /* Ref: http://getbootstrap.com/javascript/#affix-examples */
 
             
-        $('#doc-menu').affix({
+        $('#doc-menu.affix').affix({
             offset: {
                 top: ($('#header').outerHeight(true) + $('#doc-header').outerHeight(true)) + 45,
                 bottom: ($('#footer').outerHeight(true) + $('#promo-block').outerHeight(true)) + 75
