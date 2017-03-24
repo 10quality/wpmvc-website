@@ -1,47 +1,34 @@
 <?php
-
 use WPMVC\Config;
-
 /**
  * This file will load configuration file and init Main class.
  *
  * @author Alejandro Mostajo
  * @license MIT
  * @package WPMVC
- * @version 1.0.2
+ * @version 2.0.0
  */
-
 require_once( __DIR__ . '/../../vendor/autoload.php' );
-
 // --
-
 $config = include( plugin_dir_path( __FILE__ ) . '../Config/app.php' );
-
 $plugin_namespace = $config['namespace'];
-
 $plugin_name = $config['type'] == 'theme'
     ? 'theme'
     : strtolower( explode( '\\' , $plugin_namespace )[0] );
-
 $plugin_class = $plugin_namespace . '\Main';
-
 $plugin_reflection = new ReflectionClass( get_parent_class( $plugin_class ) );
-
 /**
  * Core version check.
  * @since 1.0.2
  */
 if ( $plugin_reflection->hasMethod( 'add_hooks' ) ) {
-
     $$plugin_name = new $plugin_class( new Config( $config ) );
-
     //--- INIT
     /**
      * Autoload init to support addons.
      * @since 1.0.1
      */
     $$plugin_name->autoload_init();
-
     //--- ON ADMIN
     if ( is_admin() ) {
         /**
@@ -50,22 +37,21 @@ if ( $plugin_reflection->hasMethod( 'add_hooks' ) ) {
          */
         $$plugin_name->autoload_on_admin();
     }
-
     /**
      * WPPluginCore hooks support.
      * @since 1.0.2
      */
     $$plugin_name->add_hooks();
-
 } else {
     $plugin_error = $plugin_reflection;
     add_action( 'admin_notices', 'wdt_hooks_error' );
 }
-
 if ( ! function_exists( 'wdt_hooks_error' )  ) { 
     /**
      * Displayes wordpress admin notice for missing hooks function.
      * @since 1.0.2
+     *
+     * @global object $plugin_error Reflection class to handle error version.
      */
     function wdt_hooks_error()
     {
@@ -83,7 +69,22 @@ if ( ! function_exists( 'wdt_hooks_error' )  ) {
         unset($plugin_error);
     }
 }
-
+if ( $config['type'] == 'theme' && ! function_exists( 'theme_view' ) ) {
+    /**
+     * Prints / echos a view located in the theme.
+     * @since 2.0.0
+     *
+     * @global object $theme Theme's main class global variable.
+     *
+     * @param string $key    View key.
+     * @param array  $params View params.
+     */
+    function theme_view( $key, $params = [] )
+    {
+        global $theme;
+        $theme->view( $key, $params );
+    }
+}
 // Unset
 unset($plugin_reflection);
 unset($plugin_namespace);

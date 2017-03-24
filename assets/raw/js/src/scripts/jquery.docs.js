@@ -71,7 +71,7 @@
                 //store hash
                 var target = this.hash;    
                 e.preventDefault();
-                $('body').scrollTo(target, 800, {offset: 0, 'axis':'y'});
+                $($('.page-content').length > 0 ? '.page-content' : 'body').scrollTo(target, 800, {offset: 0, 'axis':'y'});
                 
             });
         };

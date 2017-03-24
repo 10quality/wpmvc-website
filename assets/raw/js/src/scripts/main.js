@@ -31,7 +31,21 @@
             $('body').scrollTo(target, 800, {offset: 0, 'axis':'y'});
             
         });
-        
+
+        /* Menu toggle */
+        $('.menu-wrapper .toggle').click(function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            } else {
+                $(this).addClass('active');
+            }
+            if ($('.menu-wrapper .menu').hasClass('active')) {
+                $('.menu-wrapper .menu').removeClass('active');
+            } else {
+                $('.menu-wrapper .menu').addClass('active');
+            }
+        });
         
         /* ======= jQuery Responsive equal heights plugin ======= */
         /* Ref: https://github.com/liabru/jquery-match-height */

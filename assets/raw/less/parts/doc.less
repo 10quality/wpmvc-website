@@ -764,6 +764,93 @@
     }
 }
 
+.menu-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(~"100vh - 175px");
+
+    .toggle {
+        display: none;
+        transition: all 0.5s ease;
+        color: #000;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        /* Small devices (tablets, 699px and down) */
+        @media (max-width: 699px) {
+            display: block;
+            position: absolute;
+            left: 0;
+            padding: 4px 7px;
+            z-index: 9999;
+
+            .body-green & {
+                background-color: @color-green;
+            }
+            .body-blue & {
+                background-color: @color-blue;
+            }
+            .body-orange & {
+                background-color: @color-orange;
+            }
+            .body-red & {
+                background-color: @color-red;
+            }
+            .body-pink & {
+                background-color: @color-pink;
+            }
+            .body-purple & {
+                background-color: @color-purple;
+            }
+
+            &.active {
+                left: 220px;
+            }
+        }
+    }
+    .menu {
+        float: left;
+        width: 220px;
+        height: calc(100%);
+        overflow-y: auto;
+        background-color: #e9e9e9;
+        border: 1px solid #ddd;
+
+        a:hover {
+            cursor: pointer;
+        }
+
+        /* Small devices (tablets, 699px and down) */
+        @media (max-width: 699px) {
+            position: absolute;
+            z-index: 999;
+            left: -220px;
+            transition: all 0.5s ease;
+
+            &.active {
+                left: 0;
+                box-shadow: 1px 1px 17px 0px #333;
+            }
+        }
+    }
+    .page-content {
+        float: left;
+        width: calc(~"100% - 220px");
+        height: calc(100%);
+        overflow-y: auto;
+        padding: 0 25px;
+        background-color: @smoky-grey;
+
+        /* Small devices (tablets, 699px and down) */
+        @media (max-width: 699px) {
+            width: 100%;
+        }
+    }
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) { 
      .doc-content {
