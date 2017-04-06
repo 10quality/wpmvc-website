@@ -564,7 +564,18 @@
             }
         }
     }
-}
+    a[href="#"] {
+        color: #a8a4b7;
+        &:hover,
+        &:active,
+        &:focus,
+        &:visited {
+            color: #a8a4b7 !important;
+            text-decoration: none !important;
+            cursor: default !important;
+        }
+    }
+} //.doc-menu
 .doc-sub-menu {
     list-style: none;
     padding-left: 0;
