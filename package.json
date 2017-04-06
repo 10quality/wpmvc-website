@@ -1,6 +1,6 @@
 {
   "name": "wpmvc-website",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wordpress MVC website theme, based on PrettyDocs template.",
   "prestyles": [
     "sass",
