@@ -9,7 +9,7 @@ use WPMVC\Cache;
  * Generated with ayuco.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @version 1.0.3
  */
 class ThemeController extends Controller
 {
@@ -44,10 +44,17 @@ class ThemeController extends Controller
      * Wordpress hook
      * Ayuco: addition 2016-10-25 07:07 pm
      * @since 1.0.0
+     * @since 1.0.3 Adds tutorial menu.
      */
     public function menu()
     {
-        register_nav_menus(['header-menu' => __('Header Menu', 'wpmvc'), 'docs-menu' => __('Documentation Menu', 'wpmvc'), 'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'), 'footer-menu-2' => __('Footer 2 Menu', 'wpmvc')]);
+        register_nav_menus([
+            'header-menu' => __('Header Menu', 'wpmvc'),
+            'docs-menu' => __('Documentation Menu', 'wpmvc'),
+            'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'),
+            'footer-menu-2' => __('Footer 2 Menu', 'wpmvc'),
+            'tuto-menu' => __('Tutorial Menu', 'wpmvc'),
+        ]);
     }
     /**
      * Action "body_class"

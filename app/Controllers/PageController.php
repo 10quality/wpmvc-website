@@ -11,7 +11,7 @@ use WPMVC\MVC\Controllers\ModelController as Controller;
  * Generated with ayuco.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @version 1.0.3
  */
 class PageController extends Controller
 {
@@ -25,16 +25,18 @@ class PageController extends Controller
      * Renderes the homepage view.
      * Ayuco: addition 2016-10-26 11:37 pm
      * @since 1.0.0
+     * @since 1.0.3 Adds $params parameter.
      *
-     * @param string $view View to render as page.
+     * @param string $view   View to render as page.
+     * @param array  $params View parameters.
      *
      * @return view
      */
-    public function render( $view = 'pages.default' )
+    public function render( $view = 'pages.default', $params = [] )
     {
-        return $this->view->get($view, [
+        return $this->view->get($view, array_merge([
             'page'  => Page::find(get_the_ID()),
-        ]);
+        ], $params));
     }
 
     /**

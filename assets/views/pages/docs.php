@@ -5,7 +5,7 @@
  *
  * @package WPMVCWebsite
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.1
+ * @version 1.0.3
  */
 ?>
 <?php get_header() ?>
@@ -18,7 +18,7 @@
         <div class="menu">
             <nav class="doc-nav">
                 <?php wp_nav_menu( [
-                    'theme_location'    => 'docs-menu',
+                    'theme_location'    => isset( $menu ) ? $menu : 'docs-menu',
                     'menu_class'        => 'nav doc-menu',
                     'items_wrap'        => '<ul id="doc-menu" class="%2$s">%3$s</ul>',
                 ] ) ?>
