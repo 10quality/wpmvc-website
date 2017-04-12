@@ -47,6 +47,16 @@
                     </div><!--//content-inner-->
                 </div><!--//doc-body-->
 
+                <?php if ( isset( $comments )
+                    && $comments
+                    && comments_open()
+                    && get_comments_number()
+                ) : ?>
+                    <div class="comments">
+                        <?php comments_template() ?>
+                    </div><!--.comments-->
+                <?php endif ?>
+
             </div>
         </div><!--.page-content-->
 
@@ -65,6 +75,6 @@
             </small>            
         </div><!--//container-->
     </footer><!--//footer-->
-    <?php wp_footer(); ?>
+    <?php wp_footer() ?>
 </body>
 </html>
