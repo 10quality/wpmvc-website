@@ -11,13 +11,14 @@ return [
 
     'paths' => [
 
+        'base'          => __DIR__ . '/../',
         'controllers'   => __DIR__ . '/../Controllers/',
         'views'         => __DIR__ . '/../../assets/views/',
         'log'           => get_wp_home_path() . './wpmvc/log',
 
     ],
 
-    'version' => '1.0.2',
+    'version' => '1.0.4',
 
     'autoenqueue' => [
 
