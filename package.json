@@ -1,6 +1,6 @@
 {
   "name": "wpmvc-website",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Wordpress MVC website theme, based on PrettyDocs template.",
   "prestyles": [
     "sass",
@@ -15,7 +15,7 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-less": "^3.1.0",
-    "gulp-wpmvc": "^1.0.*",
+    "gulp-wpmvc": "^1.2.*",
     "jquery-match-height": "^0.7.0",
     "jquery.scrollto": "^2.1.2",
     "prismjs": "^1.5.1",

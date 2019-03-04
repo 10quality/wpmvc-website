@@ -25,8 +25,7 @@ if ( !function_exists( 'get_theme_setting' ) ) {
      */
     function get_theme_setting( $key )
     {
-        global $theme;
-        return $theme->{'_c_return_ThemeController@get_theme_setting'}( $key );
+        return theme()->{'_c_return_ThemeController@get_theme_setting'}( $key );
     }
 }
 
@@ -56,8 +55,7 @@ if ( !function_exists( 'get_the_color' ) ) {
      */
     function get_the_color( $ID = null )
     {
-        global $theme;
-        return $theme->{'_c_return_PageController@get_color'}( $ID );
+        return theme()->{'_c_return_PageController@get_color'}( $ID );
     }
 }
 
@@ -70,7 +68,6 @@ if ( !function_exists( 'theme' ) ) {
      */
     function theme()
     {
-        global $theme;
-        return $theme;
+        return get_bridge( 'theme' );
     }
 }
