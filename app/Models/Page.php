@@ -31,9 +31,6 @@ class Page extends Model
      * @var array
      */
     protected $aliases = [
-        'title'                 => 'post_title',
-        'date'                  => 'post_date',
-        'modified'              => 'post_modified',
         'header_highlight'      => 'meta_header_highlight',
         'header_bold'           => 'meta_header_bold',
         'header_tagline'        => 'meta_header_tagline',
