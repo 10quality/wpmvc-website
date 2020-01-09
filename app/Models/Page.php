@@ -80,7 +80,7 @@ class Page extends Model
      */
     public function get_date()
     {
-        return date( get_option( 'date_format' ), strtotime( $this->date ));
+        return date( get_option( 'date_format' ), strtotime( $this->post_date ));
     }
 
     /**
@@ -91,7 +91,7 @@ class Page extends Model
      */
     public function get_modified()
     {
-        return date( get_option( 'date_format' ), strtotime( $this->modified ));
+        return date( get_option( 'date_format' ), strtotime( $this->post_modified ));
     }
 
     /**
