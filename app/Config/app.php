@@ -27,13 +27,28 @@ return [
         // Assets to auto-enqueue
         'assets'        => [
                             [
-                                'asset'     => 'css/app.css',
+                                'asset'     => 'css/bootstrap.min.css',
                                 'dep'       => [],
                                 'footer'    => false,
                             ],
                             [
-                                'asset'     => 'js/app.js',
+                                'asset'     => 'css/font-awesome.min.css',
+                                'dep'       => [],
+                                'footer'    => false,
+                            ],
+                            [
+                                'asset'     => 'css/app.css',
+                                'dep'       => ['bootstrap-wpmvcwebsite', 'font-awesome-wpmvcwebsite'],
+                                'footer'    => false,
+                            ],
+                            [
+                                'asset'     => 'js/vendor.js',
                                 'dep'       => ['jquery'],
+                                'footer'    => true,
+                            ],
+                            [
+                                'asset'     => 'js/app.js',
+                                'dep'       => ['vendor-wpmvcwebsite'],
                                 'footer'    => true,
                             ],
                         ],

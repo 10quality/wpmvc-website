@@ -3,7 +3,7 @@
  * jQuery plugin.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.1.0
+ * @version 1.0.6
  */
 (function($) {
 

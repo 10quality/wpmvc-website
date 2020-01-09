@@ -3,6 +3,8 @@
  * Global theme functions.
  *
  * @author Alejandro Mostajo <info@10quality.com>
+ * @package wpmvc-website
+ * @license MIT
  * @version 1.0.0
  */
 

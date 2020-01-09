@@ -9,26 +9,12 @@ use WPMVC\MVC\Controller;
  * ADMIN DASHBOARD ONLY METHODS.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @package wpmvc-website
+ * @license MIT
+ * @version 1.0.6
  */
 class AdminController extends Controller
 {
-    /**
-     * Action "admin_enqueue_scripts"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-28 12:54 pm
-     * @since 1.0.0
-     *
-     * @param object $config App configuration.
-     */
-    public function enqueue($config = [])
-    {
-        $screen = get_current_screen();
-        if (in_array($screen->base, $config->get('vue.admin_screens'))) {
-            wp_enqueue_script('ace', 'https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js', [], '1.2.4', true);
-            wp_enqueue_script('admin-app', assets_url('admin/js/app.js', __DIR__), ['ace', 'jquery'], '1.0.0', true);
-        }
-    }
     /**
      * Action "add_meta_boxes"
      * Wordpress hook
@@ -39,7 +25,7 @@ class AdminController extends Controller
      */
     public function metaboxes()
     {
-        global $theme;
+        $theme = get_bridge( 'theme' );
         add_meta_box(
             'code-editor-metabox',
             'Editor',

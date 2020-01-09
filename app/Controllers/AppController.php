@@ -8,6 +8,8 @@ use WPMVC\MVC\Controller;
  * Generated with ayuco.
  *
  * @author Alejandro Mostajo <info@10quality.com>
+ * @package wpmvc-website
+ * @license MIT
  * @version 1.0.0
  */
 class AppController extends Controller

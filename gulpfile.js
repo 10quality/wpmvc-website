@@ -4,7 +4,7 @@
  * @author Alejandro Mostajo <info@10quality.com>
  * @package WPMVC
  * @license MIT
- * @version 1.0.1
+ * @version 1.0.6
  */
 
 'use strict';
@@ -30,19 +30,19 @@ wpmvc(gulp, config);
  * Copies CSS dependencies to assets folder.
  * @since 1.0.1
  */
-gulp.task('injectedcss', function() {
+gulp.task('vendorcss', function() {
     return gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.min.css',
             './node_modules/font-awesome/css/font-awesome.min.css',
         ])
-        .pipe(gulp.dest('./assets/raw/css'));
+        .pipe(gulp.dest('./assets/css'));
 });
 
 /**
  * Copies FONTS to assets folder.
  * @since 1.0.1
  */
-gulp.task('injectedfonts', function() {
+gulp.task('vendorfonts', function() {
     return gulp.src([
             './node_modules/font-awesome/fonts/**/*',
         ])
@@ -50,45 +50,24 @@ gulp.task('injectedfonts', function() {
 });
 
 /**
- * Copies admin-only JS to assets folder.
- * @since 1.0.1
- */
-gulp.task('injectedadminjs', function() {
-    return gulp.src([
-            './node_modules/vue/dist/vue.js',
-        ])
-        .pipe(gulp.dest('./assets/admin/raw/js/external'));
-});
-
-/**
- * Concats admin-only JS files in assets folder.
- * @since 1.0.1
- */
-gulp.task('adminscripts', ['injectedadminjs'], function() {
-    return gulp.src('./assets/admin/raw/js/**/*.js')
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('./assets/admin/js'));
-});
-
-/**
  * Copies JS to assets folder.
  * @since 1.0.1
  */
-gulp.task('injectedjs', ['adminscripts'], function() {
+gulp.task('vendorjs', function() {
     return gulp.src([
-            './node_modules/vue/dist/vue.js',
             './node_modules/bootstrap/dist/js/bootstrap.min.js',
             './node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             './node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         ])
-        .pipe(gulp.dest('./assets/raw/js/external'));
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest('./assets/js'));
 });
 
 /**
  * Compiles LESS files and runs all other tasks.
  * @since 1.0.1
  */
-gulp.task('less', ['injectedfonts', 'injectedcss'], function () {
+gulp.task('less', ['vendorfonts', 'vendorcss'], function () {
     return gulp.src('./assets/raw/less/*.less')
         .pipe(less())
         .pipe(gulp.dest('./assets/raw/css'));

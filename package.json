@@ -7,7 +7,7 @@
     "less"
   ],
   "prescripts": [
-    "injectedjs"
+    "vendorjs"
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
