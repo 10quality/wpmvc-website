@@ -3,7 +3,7 @@
  * jQuery plugin.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0 
+ * @version 1.1.0
  */
 (function($) {
 
@@ -55,7 +55,7 @@
         $el.render = function()
         {
             $html = $('<ul class="nav doc-sub-menu"></ul>');
-            for (var i in $el.data.sections) {
+            for (var i = 0; i < $el.data.sections.length; ++i) {
                 $html.append('<li><a class="scroll-to-section" href="#'+$el.data.sections[i].id+'">'+$el.data.sections[i].title+'</a></li>');
             }
             $el.data.active.append($html);
