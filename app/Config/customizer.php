@@ -38,6 +38,13 @@ return [
         'allow_mobile_menu' => [
             'default'               => false,
         ],
+        'login_handler' => [
+            'default'               => 'wp',
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'login_redirect' => [
+            'default'               => true,
+        ],
     ],
 
     // Controlles
@@ -79,6 +86,22 @@ return [
                 'description'       => __( 'This menu will only appear on mobile resolutions. It needs to be configured with a menu plugin (like Mega Menu).', 'wpmvc-website' ),
                 'section'           => 'header',
                 'priority'          => 55,
+        ],
+        'login_handler' => [
+                'type'              => 'select',
+                'label'             => __( 'Login handler', 'wpmvc-website' ),
+                'section'           => 'header',
+                'choices'           => apply_filters( 'wpmvc_login_handlers', [
+                                        'wp'    => __( 'WordPress Login', 'wpmvc-website' ),
+                                    ] ),
+                'priority'          => 80,
+        ],
+        'login_redirect' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Login redirection', 'wpmvc-website' ),
+                'description'       => __( 'Redirect to previous page after login?', 'wpmvc-website' ),
+                'section'           => 'header',
+                'priority'          => 81,
         ],
     ],
 

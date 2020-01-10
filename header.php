@@ -59,7 +59,7 @@
                                     <?php if ( is_user_logged_in() ) : ?>
                                         <a role="button"
                                             class="nav-link nav-pill nav-profile"
-                                            href="#"
+                                            href="<?php echo esc_url( apply_filters( 'wpmvc_account_url', '#' ) ) ?>"
                                             title="<?php _e( 'Account', 'wpmvc-website' ) ?>"
                                         ><img class="nav-avatar"
                                             src="<?php echo esc_url( get_avatar_url( get_current_user_id() ) ) ?>"
@@ -68,7 +68,7 @@
                                     <?php else : ?>
                                         <a role="button"
                                             class="nav-link nav-pill nav-login"
-                                            href="#"
+                                            href="<?php echo esc_url( apply_filters( 'wpmvc_login_url', '#' ) ) ?>"
                                         ><?php _e( 'Login' ) ?></a>
                                     <?php endif ?>
                                 <?php endif ?>

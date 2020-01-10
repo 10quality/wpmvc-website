@@ -11,14 +11,6 @@ use WPMVCWebsite\Models\Page;
  * @version 1.0.7
  */
 
-/**
- * Theme support.
- * @since 1.0.0
- */
-if ( function_exists( 'add_theme_support' ) ) {
-    add_theme_support( 'post-thumbnails' );
-}
-
 if ( ! function_exists( 'get_the_color' ) ) {
     /**
      * Returns the theme color of an object. 

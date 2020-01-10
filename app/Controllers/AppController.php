@@ -39,4 +39,48 @@ class AppController extends Controller
             return '';
         return preg_replace( ['/{copy}/','/{year}/'], ['&copy;',date( 'Y' )], $text );
     }
+    /**
+     * Returns list of available login handlers.
+     * @since 1.0.7
+     * 
+     * @hook wpmvc_login_handlers
+     * 
+     * @param array $handlers
+     * 
+     * @return array
+     */
+    public function login_handlers( $handlers )
+    {
+        if ( function_exists( 'WC' ) && get_option( 'woocommerce_myaccount_page_id', false ) )
+            $handlers['wc'] = __( 'WooCommerce My Account', 'wpmvc-website' );
+        return $handlers;
+    }
+    /**
+     * Returns login url.
+     * @since 1.0.7
+     * 
+     * @hook wpmvc_login_url
+     * 
+     * @global object $wp
+     * 
+     * @param string $url
+     * 
+     * @return string
+     */
+    public function login_url( $url )
+    {
+        global $wp;
+        switch ( get_theme_mod( 'login_handler', 'wp' ) ) {
+            case 'wp':
+                return wp_login_url( get_theme_mod( 'login_redirect', true ) ? home_url( $wp->request ) : '' );
+            case 'wc':
+                $myaccount = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+                if ( empty( $myaccount ) )
+                    return $url;
+                return get_theme_mod( 'login_redirect', true )
+                    ? add_query_arg( ['redirect_to' => home_url( $wp->request )], $myaccount )
+                    : $myaccount;
+        }
+        return $url;
+    }
 }

@@ -11,10 +11,21 @@ use WPMVC\Cache;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.6
+ * @version 1.0.7
  */
 class ThemeController extends Controller
 {
+    /**
+     * Adds theme support.
+     * @since 1.0.7
+     * 
+     * @hook after_setup_theme
+     */
+    public function theme_support()
+    {
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'woocommerce' );
+    }
     /**
      * WordPress init.
      * - Register navs.
