@@ -49,7 +49,6 @@ class PageController extends Controller
      */
     public function on_save( &$page )
     {
-        $page->header_tagline = str_replace( "\r\n", '', $page->header_tagline );
         // Get cards
         $cards = [];
         $icons = Request::input('meta_card_icons', []);

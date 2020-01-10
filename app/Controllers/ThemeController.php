@@ -11,42 +11,16 @@ use WPMVC\Cache;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.6
  */
 class ThemeController extends Controller
 {
     /**
-     * Returns a setting stored in the database.
-     * Ayuco: addition 2016-10-25 06:50 pm
+     * WordPress init.
+     * - Register navs.
      * @since 1.0.0
-     *
-     * @param string $key Setting key.
-     *
-     * @return mixed
-     */
-    public function get_theme_setting($key)
-    {
-        $settings = $this->get_settings();
-        return isset($settings[$key]) ? $settings[$key] : null;
-    }
-    /**
-     * Returns the theme setttings located in the databse.
-     * @since 1.0.0
-     *
-     * @return array 
-     */
-    private function get_settings()
-    {
-        return Cache::remember('wpmvc_theme_settings', 60, function () {
-            return get_option('wpmvc', []);
-        });
-    }
-    /**
-     * Action "init"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-25 07:07 pm
-     * @since 1.0.0
-     * @since 1.0.3 Adds tutorial menu.
+     * 
+     * @hook init
      */
     public function menu()
     {
@@ -59,43 +33,59 @@ class ThemeController extends Controller
         ]);
     }
     /**
-     * Action "body_class"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-27 05:40 pm
+     * Returns body CSS classes.
      * @since 1.0.0
+     * 
+     * @hook body_class
+     * 
+     * @param array $classes
      *
      * @return array
      */
-    public function body_class($classes)
+    public function body_class( $classes )
     {
-        if (is_front_page()) {
+        if ( is_front_page() ) {
             $classes[] = 'landing-page';
         }
         $classes[] = get_the_color();
         return $classes;
     }
     /**
-     * Action "widgets_init"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-27 06:25 pm
+     * Register sidebars.
      * @since 1.0.0
+     * 
+     * @hook widgets_init
      */
     public function sidebars()
     {
-        register_sidebar(['name' => 'Pages', 'id' => 'wpmvc-page-right', 'description' => 'Sidebar located on the right side of pages, when their flag is activated.', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>']);
-        register_sidebar(['name' => 'Footer', 'id' => 'wpmvc-footer', 'description' => 'Sidebar located at the footer of the website.', 'before_widget' => '<div id="%1$s" class="widget %2$s">', 'after_widget' => '</div>']);
+        register_sidebar( [
+            'name'          => 'Pages',
+            'id'            => 'wpmvc-page-right',
+            'description'   => __( 'Sidebar located on the right side of pages, when their flag is activated.', 'wpmvc-website' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>'
+        ] );
+        register_sidebar( [
+            'name'          => 'Footer',
+            'id'            => 'wpmvc-footer',
+            'description'   => __( 'Sidebar located at the footer of the website.', 'wpmvc-website' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>'
+        ] );
     }
     /**
-     * Filter "nav_menu_css_class"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-28 06:47 pm
-     * @since fill
+     * Returns menu nav css classes.
+     * @since 1.0.6
+     * 
+     * @hook nav_menu_css_class
      *
-     * @return
+     * @param array $classes
+     * 
+     * @return array
      */
-    public function filter_nav_menu_css($classes)
+    public function filter_nav_menu_css( $classes )
     {
-        if (in_array('current-menu-item', $classes))
+        if ( in_array( 'current-menu-item', $classes ) )
             $classes[] = 'active';
         return $classes;
     }

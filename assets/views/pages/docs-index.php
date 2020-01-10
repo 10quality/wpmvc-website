@@ -16,7 +16,7 @@
             <div id="doc-header" class="doc-header text-center">
                 <h1 class="doc-title">
                     <span><i class="fa <?= $page->icon ?>"></i> </span>
-                    <span><?= $page->title ?></span>
+                    <span><?= $page->post_title ?></span>
                 </h1>
                 <div class="meta">
                     <span><i class="fa fa-clock-o"></i> </span>
@@ -33,7 +33,7 @@
                         'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                     ] ) ?>
                 </div>
-                <?= $page->content ?>
+                <?= $page->post_content ?>
                 <?php do_action( 'wpmvc_after_page' ) ?>
             </div>
 

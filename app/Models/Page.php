@@ -9,10 +9,10 @@ use WPMVC\MVC\Models\PostModel as Model;
  * Page model.
  * Generated with ayuco.
  *
- * @author Alejandro Mostajo <info@10quality.com>
+ * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.0
+ * @version 1.0.7
  */
 class Page extends Model
 {
@@ -31,9 +31,6 @@ class Page extends Model
      * @var array
      */
     protected $aliases = [
-        'header_highlight'      => 'meta_header_highlight',
-        'header_bold'           => 'meta_header_bold',
-        'header_tagline'        => 'meta_header_tagline',
         'cards_title'           => 'meta_cards_title',
         'cards'                 => 'meta_cards',
         'download_url'          => 'meta_download_url',

@@ -92,7 +92,9 @@ return [
         'is_public'     => false,
     ],
 
-    'addons' => [],
+    'addons' => [
+        'WPMVC\Addons\Customizer\CustomizerAddon',
+    ],
 
     // Vue sttings
     'vue' => [

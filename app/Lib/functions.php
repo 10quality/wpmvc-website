@@ -1,11 +1,14 @@
 <?php
+
+use WPMVCWebsite\Models\Page;
+
 /**
  * Global theme functions.
  *
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.0
+ * @version 1.0.7
  */
 
 /**
@@ -14,36 +17,6 @@
  */
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
-}
-
-if ( !function_exists( 'get_theme_setting' ) ) {
-    /**
-     * Returns a theme setting. 
-     * @since 1.0.0
-     *
-     * @param string $key Setting key.
-     *
-     * @return mixed
-     */
-    function get_theme_setting( $key )
-    {
-        return theme()->{'_c_return_ThemeController@get_theme_setting'}( $key );
-    }
-}
-
-if ( !function_exists( 'the_theme_setting' ) ) {
-    /**
-     * Echo a theme setting. 
-     * @since 1.0.0
-     *
-     * @param string $key Setting key.
-     *
-     * @return mixed
-     */
-    function the_theme_setting( $key )
-    {
-        echo get_theme_setting( $key );
-    }
 }
 
 if ( !function_exists( 'get_the_color' ) ) {
@@ -71,5 +44,68 @@ if ( !function_exists( 'theme' ) ) {
     function theme()
     {
         return get_bridge( 'theme' );
+    }
+}
+
+if ( !function_exists( 'get_page_model' ) ) {
+    /**
+     * Returns page model.
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    function get_page_model()
+    {
+        global $page_model;
+        if ( get_the_ID() ) {
+            if ( ! isset( $page_model ) ) {
+                $page_model = Page::find( get_the_ID() );
+                $GLOBALS['page_model'] = $page_model;
+            }
+            return $page_model;
+        }
+        return null;
+    }
+}
+
+if ( !function_exists( 'get_page_icon' ) ) {
+    /**
+     * Returns page property.
+     * @since 1.0.7
+     *
+     * @return string
+     */
+    function get_page_icon()
+    {
+        $page = get_page_model();
+        return $page ? $page->icon : null;
+    }
+}
+
+if ( !function_exists( 'get_page_formatted_modified' ) ) {
+    /**
+     * Returns page property.
+     * @since 1.0.7
+     *
+     * @return string
+     */
+    function get_page_formatted_modified()
+    {
+        $page = get_page_model();
+        return $page ? $page->formatted_modified : null;
+    }
+}
+
+if ( !function_exists( 'get_page_has_sidebar' ) ) {
+    /**
+     * Returns page property.
+     * @since 1.0.7
+     *
+     * @return string
+     */
+    function get_page_has_sidebar()
+    {
+        $page = get_page_model();
+        return $page ? $page->has_sidebar : null;
     }
 }

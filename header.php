@@ -23,14 +23,14 @@
 </head>
 <body <?php body_class(); ?>>
     <div class="page-wrapper">
-        <?php if ( !is_front_page() ) : ?>
+        <?php if ( ! is_front_page() ) : ?>
             <header id="header" class="header">
                 <div class="container">
                     <div class="branding">
                         <h1 class="logo">
                             <a href="<?php echo home_url( '/' ) ?>" title="<?php echo bloginfo( 'title' ) ?>">
                                 <span aria-hidden="true" class="icon_documents_alt icon"></span>
-                                <span class="text-highlight"><?php the_theme_setting( 'title_highlight' ) ?></span><span class="text-bold"><?php the_theme_setting( 'title_bold' ) ?></span>
+                                <span class="text-highlight"><?php echo get_theme_mod( 'title_highlight' ) ?></span><span class="text-bold"><?php echo get_theme_mod( 'title_bold' ) ?></span>
                             </a>
                         </h1>
                     </div><!--//branding-->

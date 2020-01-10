@@ -5,20 +5,20 @@
  *
  * @package WPMVCWebsite
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @version 1.0.7
  */
 ?>
-<?php get_header() ?>
+<?php get_header( 'homepage' ) ?>
 <header class="header text-center">
     <div class="container">
         <div class="branding">
             <h1 class="logo">
                 <span aria-hidden="true" class="icon_documents_alt icon"></span>
-                <span class="text-highlight"><?= $page->header_highlight ?></span><span class="text-bold"><?= $page->header_bold ?></span>
+                <span class="text-highlight"><?= get_theme_mod( 'title_highlight' ) ?></span><span class="text-bold"><?= get_theme_mod( 'title_bold' ) ?></span>
             </h1>
         </div><!--//branding-->
         <div class="tagline">
-            <?= $page->header_tagline ?>
+            <?= get_bloginfo( 'description' ) ?>
         </div><!--//tagline-->
     </div><!--//container-->
 </header><!--//header-->

@@ -4,8 +4,10 @@
  * Automated metabox.
  * Generated with ayuco.
  *
- * @author fill
- * @version fill
+ * @author Ale Mostajo <info@10quality.com>
+ * @package wpmvc-website
+ * @license MIT
+ * @version 1.0.7
  */
 ?>
 <table class="form-table">
@@ -34,94 +36,6 @@
     </tr>
 
 </table>
-
-<div id="meta_section_page"
-    class="page-template-section"
-    data-template="page-homepage.php"
->
-    <h4>Download button</h4>
-    <table class="form-table">
-
-        <tr valign="top">
-            <th scope="row">Url</th>
-            <td>
-                <input type="text"
-                    name="meta_download_url"
-                    class="regular-text"
-                    value="<?php echo $model->download_url ?>"
-                />
-            </td>
-        </tr>
-
-    </table>
-
-    <h4>Header</h4>
-    <table class="form-table">
-
-        <tr valign="top">
-            <th scope="row">Highlight</th>
-            <td>
-                <input type="text"
-                    name="meta_header_highlight"
-                    class="regular-text"
-                    value="<?php echo $model->header_highlight ?>"
-                />
-            </td>
-        </tr>
-
-        <tr valign="top">
-            <th scope="row">Bold</th>
-            <td>
-                <input type="text"
-                    name="meta_header_bold"
-                    class="regular-text"
-                    value="<?php echo $model->header_bold ?>"
-                />
-            </td>
-        </tr>
-
-        <tr valign="top">
-            <th scope="row">Tagline</th>
-            <td>
-                <?php wp_editor( $model->header_tagline, 'header-tagline', [
-                    'textarea_name' => 'meta_header_tagline',
-                    'wpautop'       => false,
-                ] ) ?>
-            </td>
-        </tr>
-
-    </table>
-
-    <h4>Cards</h4>
-    <table class="form-table">
-
-        <tr valign="top">
-            <th scope="row">Title</th>
-            <td>
-                <input type="text"
-                    name="meta_cards_title"
-                    class="regular-text"
-                    value="<?php echo $model->cards_title ?>"
-                />
-            </td>
-        </tr>
-
-        <tr valign="top">
-            <th scope="row">Cards</th>
-            <td>
-                <cards-manager inline-template
-                    json-model="cards"
-                    json-data="<?= $model->cards_json ?>"
-                >
-                    <?php theme()->view('admin.misc.vue.cards-manager', [
-                        'colors'    => $model->card_colors,
-                    ]) ?>
-                </cards-manager>
-            </td>
-        </tr>
-
-    </table>
-</div>
 
 <div id="meta_section_page"
     class="page-template-section"
