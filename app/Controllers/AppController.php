@@ -104,4 +104,16 @@ class AppController extends Controller
         }
         return $url;
     }
+    /**
+     * Override login hear url, and return home url.
+     * @since 1.0.7
+     * 
+     * @hook login_headerurl
+     * 
+     * @return string
+     */
+    public function login_headerurl()
+    {
+        return home_url( '/' );
+    }
 }
