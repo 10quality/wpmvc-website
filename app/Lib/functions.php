@@ -19,7 +19,7 @@ if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
 }
 
-if ( !function_exists( 'get_the_color' ) ) {
+if ( ! function_exists( 'get_the_color' ) ) {
     /**
      * Returns the theme color of an object. 
      * @since 1.0.0
@@ -34,7 +34,7 @@ if ( !function_exists( 'get_the_color' ) ) {
     }
 }
 
-if ( !function_exists( 'theme' ) ) {
+if ( ! function_exists( 'theme' ) ) {
     /**
      * Returns the theme object. 
      * @since 1.0.0
@@ -47,7 +47,7 @@ if ( !function_exists( 'theme' ) ) {
     }
 }
 
-if ( !function_exists( 'get_page_model' ) ) {
+if ( ! function_exists( 'get_page_model' ) ) {
     /**
      * Returns page model.
      * @since 1.0.0
@@ -68,7 +68,7 @@ if ( !function_exists( 'get_page_model' ) ) {
     }
 }
 
-if ( !function_exists( 'get_page_icon' ) ) {
+if ( ! function_exists( 'get_page_icon' ) ) {
     /**
      * Returns page property.
      * @since 1.0.7
@@ -82,7 +82,7 @@ if ( !function_exists( 'get_page_icon' ) ) {
     }
 }
 
-if ( !function_exists( 'get_page_formatted_modified' ) ) {
+if ( ! function_exists( 'get_page_formatted_modified' ) ) {
     /**
      * Returns page property.
      * @since 1.0.7
@@ -96,7 +96,7 @@ if ( !function_exists( 'get_page_formatted_modified' ) ) {
     }
 }
 
-if ( !function_exists( 'get_page_has_sidebar' ) ) {
+if ( ! function_exists( 'get_page_has_sidebar' ) ) {
     /**
      * Returns page property.
      * @since 1.0.7
@@ -107,5 +107,20 @@ if ( !function_exists( 'get_page_has_sidebar' ) ) {
     {
         $page = get_page_model();
         return $page ? $page->has_sidebar : null;
+    }
+}
+
+if ( ! function_exists( 'sanitize_copyright' ) ) {
+    /**
+     * Returns parsed and sanitized copyright text.
+     * @since 1.0.7
+     * 
+     * @param string $text
+     * 
+     * @return string
+     */
+    function sanitize_copyright( $text )
+    {
+        return theme()->{'_c_return_AppController@sanitize_copyright'}( $text );
     }
 }

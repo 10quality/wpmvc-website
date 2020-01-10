@@ -24,4 +24,19 @@ class AppController extends Controller
     {
         register_taxonomy_for_object_type( 'post_tag', 'page' );
     }
+    /**
+     * Returns parsed and sanitized copyright text.
+     * @since 1.0.7
+     * 
+     * @param string $text
+     * 
+     * @return string
+     */
+    public function sanitize_copyright( $text )
+    {
+        $text = trim( $text );
+        if ( empty( $text ) )
+            return '';
+        return preg_replace( ['/{copy}/','/{year}/'], ['&copy;',date( 'Y' )], $text );
+    }
 }

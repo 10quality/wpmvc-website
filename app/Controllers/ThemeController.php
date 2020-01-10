@@ -24,13 +24,15 @@ class ThemeController extends Controller
      */
     public function menu()
     {
-        register_nav_menus([
-            'header-menu' => __('Header Menu', 'wpmvc'),
-            'docs-menu' => __('Documentation Menu', 'wpmvc'),
-            'footer-menu-1' => __('Footer 1 Menu', 'wpmvc'),
-            'footer-menu-2' => __('Footer 2 Menu', 'wpmvc'),
-            'tuto-menu' => __('Tutorial Menu', 'wpmvc'),
-        ]);
+        register_nav_menus( [
+            'header-menu'           => __('Header Menu', 'wpmvc'),
+            'mobile-header-menu'    => __('Mobile Header Menu', 'wpmvc'),
+            'mobile-menu'           => __('Mobile Menu', 'wpmvc'),
+            'docs-menu'             => __('Documentation Menu', 'wpmvc'),
+            'footer-menu-1'         => __('Footer 1 Menu', 'wpmvc'),
+            'footer-menu-2'         => __('Footer 2 Menu', 'wpmvc'),
+            'tuto-menu'             => __('Tutorial Menu', 'wpmvc'),
+        ] );
     }
     /**
      * Returns body CSS classes.

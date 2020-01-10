@@ -293,6 +293,13 @@ select {
     color: rgba(0, 0, 0, 0.4);
 }
 
+/* ======  Nav  ======= */
+.nav-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* ====== Footer ====== */
 .footer-bar {
@@ -317,5 +324,18 @@ select {
     }
     .fa-heart {
         color: @color-pink;
+    }
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media screen and ( max-width: 550px ) {
+    .mobile-only {
+        display: block;
+    }
+    .desktop-only {
+        display: none;
     }
 }
