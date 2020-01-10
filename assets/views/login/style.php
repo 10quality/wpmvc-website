@@ -5,7 +5,7 @@
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.8
  */
 
 $logo_url = wp_get_attachment_url( get_theme_mod( 'wp_login_logo', 0 ) );

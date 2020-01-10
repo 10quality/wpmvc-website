@@ -11,13 +11,12 @@ use WPMVC\Bridge;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 class Main extends Bridge
 {
     /**
      * Declaration of public wordpress hooks.
-     * @since 1.0.7
      */
     public function init()
     {

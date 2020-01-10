@@ -13,7 +13,7 @@ use WPMVC\MVC\Controllers\ModelController as Controller;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.8
  */
 class PageController extends Controller
 {

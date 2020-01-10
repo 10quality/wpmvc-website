@@ -10,7 +10,7 @@ use WPMVC\MVC\Controller;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.0
+ * @version 1.0.8
  */
 class AppController extends Controller
 {
@@ -26,7 +26,7 @@ class AppController extends Controller
     }
     /**
      * Returns parsed and sanitized copyright text.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @param string $text
      * 
@@ -41,7 +41,7 @@ class AppController extends Controller
     }
     /**
      * Returns list of available login handlers.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @hook wpmvc_login_handlers
      * 
@@ -57,7 +57,7 @@ class AppController extends Controller
     }
     /**
      * Returns login url.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @hook wpmvc_login_url
      * 
@@ -85,7 +85,7 @@ class AppController extends Controller
     }
     /**
      * Returns account url.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @hook wpmvc_account_url
      * 
@@ -106,7 +106,7 @@ class AppController extends Controller
     }
     /**
      * Override login hear url, and return home url.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @hook login_headerurl
      * 

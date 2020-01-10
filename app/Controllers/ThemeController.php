@@ -11,13 +11,13 @@ use WPMVC\Cache;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 class ThemeController extends Controller
 {
     /**
      * Adds theme support.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @hook after_setup_theme
      */

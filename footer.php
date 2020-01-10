@@ -4,7 +4,7 @@
  * Wordpress template.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.7
+ * @version 1.0.8
  */
 ?>
         </div><!--.site-body-->

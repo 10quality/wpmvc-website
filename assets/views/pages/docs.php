@@ -5,7 +5,7 @@
  *
  * @package WPMVCWebsite
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.7
+ * @version 1.0.8
  */
 ?>
 <?php get_header() ?>

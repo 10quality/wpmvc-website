@@ -5,7 +5,7 @@
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 ?>
 <?php get_header( 'homepage' ) ?>
