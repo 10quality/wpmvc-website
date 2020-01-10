@@ -83,4 +83,25 @@ class AppController extends Controller
         }
         return $url;
     }
+    /**
+     * Returns account url.
+     * @since 1.0.7
+     * 
+     * @hook wpmvc_account_url
+     * 
+     * @param string $url
+     * 
+     * @return string
+     */
+    public function account_url( $url )
+    {
+        switch ( get_theme_mod( 'account_page_handler', 'wp' ) ) {
+            case 'wp':
+                return admin_url( '/' );
+            case 'wc':
+                $myaccount = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+                return empty( $myaccount ) ? $url : $myaccount;
+        }
+        return $url;
+    }
 }

@@ -15,6 +15,10 @@ return [
             'title'                 => __( 'Footer', 'wpmvc-website' ),
             'priority'              => 109,
         ],
+        'auth' => [
+            'title'                 => __( 'Authentication', 'wpmvc-website' ),
+            'priority'              => 115,
+        ],
     ],
 
     // Settings
@@ -44,6 +48,10 @@ return [
         ],
         'login_redirect' => [
             'default'               => true,
+        ],
+        'account_page_handler' => [
+            'default'               => 'wp',
+            'sanitize_callback'     => 'sanitize_text_field',
         ],
     ],
 
@@ -90,18 +98,27 @@ return [
         'login_handler' => [
                 'type'              => 'select',
                 'label'             => __( 'Login handler', 'wpmvc-website' ),
-                'section'           => 'header',
+                'section'           => 'auth',
                 'choices'           => apply_filters( 'wpmvc_login_handlers', [
                                         'wp'    => __( 'WordPress Login', 'wpmvc-website' ),
                                     ] ),
-                'priority'          => 80,
+                'priority'          => 10,
         ],
         'login_redirect' => [
                 'type'              => 'checkbox',
                 'label'             => __( 'Login redirection', 'wpmvc-website' ),
                 'description'       => __( 'Redirect to previous page after login?', 'wpmvc-website' ),
-                'section'           => 'header',
-                'priority'          => 81,
+                'section'           => 'auth',
+                'priority'          => 11,
+        ],
+        'account_page_handler' => [
+                'type'              => 'select',
+                'label'             => __( 'Account page handler', 'wpmvc-website' ),
+                'section'           => 'auth',
+                'choices'           => apply_filters( 'wpmvc_account_page_handlers', [
+                                        'wp'    => __( 'WordPress Dashboard', 'wpmvc-website' ),
+                                    ] ),
+                'priority'          => 20,
         ],
     ],
 

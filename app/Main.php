@@ -25,6 +25,8 @@ class Main extends Bridge
         $this->add_action('init', 'AppController@taxonomies');
         $this->add_filter('wpmvc_login_handlers', 'AppController@login_handlers');
         $this->add_filter('wpmvc_login_url', 'AppController@login_url');
+        $this->add_filter('wpmvc_account_page_handlers', 'AppController@login_handlers');
+        $this->add_filter('wpmvc_account_url', 'AppController@account_url');
         // Theme filters
         $this->add_action('after_setup_theme', 'ThemeController@theme_support');
         $this->add_action('init', 'ThemeController@menu');
