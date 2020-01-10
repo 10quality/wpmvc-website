@@ -77,6 +77,10 @@ return [
             'default'               => 'center top',
             'sanitize_callback'     => 'sanitize_text_field',
         ],
+        'wp_login_linktext_color' => [
+            'default'               => '#FFFFFF',
+            'sanitize_callback'     => 'sanitize_hex_color',
+        ],
     ],
 
     // Controlles
@@ -192,6 +196,13 @@ return [
                 'label'             => __( 'WordPress Login Links (hover)', 'wpmvc-website' ),
                 'section'           => 'auth',
                 'priority'          => 102,
+        ],
+        'wp_login_linktext_color' => [
+                'type'              => 'color',
+                'label'             => __( 'WordPress Login link text', 'wpmvc-website' ),
+                'description'       => __( 'Button text color.', 'wpmvc-website' ),
+                'section'           => 'auth',
+                'priority'          => 103,
         ],
     ],
 
