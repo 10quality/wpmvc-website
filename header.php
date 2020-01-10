@@ -52,8 +52,44 @@
                             </div>
                             <?php do_action( 'wpmvc_nav_left' ) ?>
                         </div>
-                        <div class="nav-section">
-                            <?php do_action( 'wpmvc_nav_left' ) ?>
+                        <div class="nav-section sub-nav">
+                            <div class="sub-nav-section">
+                                <?php do_action( 'wpmvc_nav_right' ) ?>
+                                <?php if ( get_theme_mod( 'allow_login', true ) ) : ?>
+                                    <?php if ( is_user_logged_in() ) : ?>
+                                        <a role="button"
+                                            class="nav-link nav-pill nav-profile"
+                                            href="#"
+                                            title="<?php _e( 'Account', 'wpmvc-website' ) ?>"
+                                        ><img class="nav-avatar"
+                                            src="<?php echo esc_url( get_avatar_url( get_current_user_id() ) ) ?>"
+                                            alt="<?php echo esc_attr( wp_get_current_user()->display_name )?>"
+                                        ></a>
+                                    <?php else : ?>
+                                        <a role="button"
+                                            class="nav-link nav-pill nav-login"
+                                            href="#"
+                                        ><?php _e( 'Login' ) ?></a>
+                                    <?php endif ?>
+                                <?php endif ?>
+                            </div>
+                            <div class="sub-nav-section">
+                                <?php if ( get_theme_mod( 'allow_search', true ) ) : ?>
+                                    <button role="button"
+                                        title="<?php _e( 'Search' ) ?>"
+                                        class="button button-nav nav-search"
+                                    ><i class="fa fa-search"></i></button>
+                                <?php endif ?>
+                                <?php if ( get_theme_mod( 'allow_mobile_menu', false ) ) : ?>
+                                    <div class="mobile-only">
+                                        <?php wp_nav_menu( [
+                                            'theme_location'    => 'mobile-menu',
+                                            'menu_class'        => 'breadcrumb',
+                                            'items_wrap'        => '<ol id="%1$s" class="%2$s">%3$s</ol>',
+                                        ] ) ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
                         </div>
                     </div><!--//nav-flex-->
                 </div><!--//container-->

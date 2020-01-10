@@ -25,7 +25,6 @@ class PageController extends Controller
     protected $model = 'WPMVCWebsite\\Models\\Page';
     /**
      * Renderes the homepage view.
-     * Ayuco: addition 2016-10-26 11:37 pm
      * @since 1.0.0
      * @since 1.0.3 Adds $params parameter.
      *
