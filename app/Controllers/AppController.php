@@ -15,13 +15,13 @@ use WPMVC\MVC\Controller;
 class AppController extends Controller
 {
     /**
-     * Action "init"
-     * Wordpress hook
-     * Ayuco: addition 2016-11-07 09:08 pm
+     * Tags.
      * @since 1.0.0
+     * 
+     * @hook init
      */
     public function taxonomies()
     {
-        register_taxonomy_for_object_type('post_tag', 'page');
+        register_taxonomy_for_object_type( 'post_tag', 'page' );
     }
 }

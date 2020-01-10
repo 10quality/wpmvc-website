@@ -3,9 +3,9 @@
 namespace WPMVCWebsite\Controllers;
 
 use WPMVC\MVC\Controller;
+
 /**
- * ShortController controller.
- * Generated with ayuco.
+ * Shortcodes controller.
  *
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
@@ -15,67 +15,74 @@ use WPMVC\MVC\Controller;
 class ShortcodeController extends Controller
 {
     /**
-     * Shortcode "docs-section"
-     * Ayuco: addition 2016-10-28 07:04 pm
+     * [docs-section]
      * @since 1.0.0
+     * 
+     * @hook docs-section
      *
      * @param array  $atts    Attributes.
      * @param string $content Shortcode content.
      *
      * @return view
      */
-    public function docs_section($atts, $content = '')
+    public function docs_section( $atts, $content = '' )
     {
-        return $this->view->get('shortcodes.docs-section', ['attributes' => shortcode_atts(['id' => 'step' . uniqid(), 'title' => 'Section'], $atts), 'content' => $content]);
+        return $this->view->get( 'shortcodes.docs-section', [
+            'attributes'    => shortcode_atts( ['id' => 'step' . uniqid(), 'title' => 'Section'], $atts ),
+            'content'       => $content,
+        ] );
     }
     /**
-     * Shortcode "code-line"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-31 12:47 pm
+     * [code-line]
      * @since 1.0.0
+     * 
+     * @hook code-line
      *
      * @param array  $atts    Attributes.
      * @param string $content Shortcode content.
      *
      * @return view
      */
-    public function code_line($atts, $content = '')
+    public function code_line( $atts, $content = '' )
     {
-        return $this->view->get('shortcodes.code-line', ['content' => $content]);
+        return $this->view->get( 'shortcodes.code-line', ['content' => $content] );
     }
     /**
-     * Shortcode "callout"
-     * Wordpress hook
-     * Ayuco: addition 2016-10-31 02:11 pm
+     * [callout]
      * @since 1.0.0
+     * 
+     * @hook callout
      *
      * @param array  $atts    Attributes.
      * @param string $content Shortcode content.
      *
      * @return view
      */
-    public function callout($atts, $content = '')
+    public function callout( $atts, $content = '' )
     {
-        return $this->view->get('shortcodes.callout', ['attributes' => shortcode_atts(['title' => '', 'icon' => '', 'type' => 'success'], $atts), 'content' => $content]);
+        return $this->view->get( 'shortcodes.callout', [
+            'attributes'    => shortcode_atts( ['title' => '', 'icon' => '', 'type' => 'success'], $atts ),
+            'content'       => $content,
+        ] );
     }
     /**
-     * Shortcode "youtube"
-     * Wordpress hook
-     * Ayuco: addition 2017-04-12 10:42 am
+     * [youtube]
      * @since 1.0.3
+     * 
+     * @hook youtube
      *
      * @param array  $atts    Attributes.
      * @param string $content Shortcode content.
      *
      * @return view
      */
-    public function youtube($atts, $content = '')
+    public function youtube( $atts, $content = '' )
     {
-        if (!isset($atts['video']))
+        if ( ! isset( $atts['video'] ) )
             return;
-        $ID = $this->get_youtube_id($atts['video']);
+        $ID = $this->get_youtube_id( $atts['video'] );
         if ($ID)
-            return $this->view->get('shortcodes.youtube', ['ID' => $ID]);
+            return $this->view->get( 'shortcodes.youtube', ['ID' => $ID] );
     }
     /**
      * Returns youtube video ID based on given url.
@@ -85,9 +92,9 @@ class ShortcodeController extends Controller
      *
      * @return string ID
      */
-    private function get_youtube_id($url)
+    private function get_youtube_id( $url )
     {
         parse_str( parse_url( $url, PHP_URL_QUERY ), $vars );
-        return isset($vars['v']) ? $vars['v'] : null;
+        return isset( $vars['v'] ) ? $vars['v'] : null;
     }
 }
