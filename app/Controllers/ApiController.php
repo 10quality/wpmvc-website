@@ -46,6 +46,7 @@ class ApiController extends Controller
                     },
                 ],
                 'limit' => [
+                    'default'           => 15,
                     'required'          =>  false,
                     'sanitize_callback' => 'absint',
                     'validate_callback' => function( $param ) {
