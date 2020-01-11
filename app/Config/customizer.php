@@ -19,6 +19,10 @@ return [
             'title'                 => __( 'Authentication', 'wpmvc-website' ),
             'priority'              => 115,
         ],
+        'superbrowse' => [
+            'title'                 => __( 'Superbrowse', 'wpmvc-website' ),
+            'priority'              => 140,
+        ],
     ],
 
     // Settings
@@ -80,6 +84,38 @@ return [
         'wp_login_linktext_color' => [
             'default'               => '#FFFFFF',
             'sanitize_callback'     => 'sanitize_hex_color',
+        ],
+        'superbrowse_post' => [
+            'default'               => true,
+        ],
+        'superbrowse_post_name' => [
+            'default'               => __( 'Posts' ),
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'superbrowse_page' => [
+            'default'               => true,
+        ],
+        'superbrowse_page_name' => [
+            'default'               => __( 'Pages' ),
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'superbrowse_addon' => [
+            'default'               => true,
+        ],
+        'superbrowse_addon_name' => [
+            'default'               => __( 'Add-ons', 'wpmvc-website' ),
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'superbrowse_excluded' => [
+            'default'               => '',
+            'sanitize_callback'     => 'sanitize_ids_string',
+        ],
+        'superbrowse_cache' => [
+            'default'               => false,
+        ],
+        'superbrowse_cache_minutes' => [
+            'default'               => 120,
+            'sanitize_callback'     => 'absint',
         ],
     ],
 
@@ -151,7 +187,6 @@ return [
         'wp_login_logo' => [
                 'type'              => 'media',
                 'label'             => __( 'WordPress Login Logo', 'wpmvc-website' ),
-                'description'       => __( 'In pixels.', 'wpmvc-website' ),
                 'section'           => 'auth',
                 'mime'              => 'image',
                 'priority'          => 90,
@@ -203,6 +238,66 @@ return [
                 'description'       => __( 'Button text color.', 'wpmvc-website' ),
                 'section'           => 'auth',
                 'priority'          => 103,
+        ],
+        'superbrowse_post' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Allow search for posts', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 6,
+        ],
+        'superbrowse_post_name' => [
+                'type'              => 'text',
+                'label'             => __( 'Posts label', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 7,
+        ],
+        'superbrowse_page' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Allow search for pages', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 8,
+        ],
+        'superbrowse_page_name' => [
+                'type'              => 'text',
+                'label'             => __( 'Pages label', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 9,
+        ],
+        'superbrowse_addon' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Allow search for add-ons', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 10,
+        ],
+        'superbrowse_addon_name' => [
+                'type'              => 'text',
+                'label'             => __( 'Add-ons label', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 10,
+        ],
+        'superbrowse_excluded' => [
+                'type'              => 'text',
+                'label'             => __( 'Excluded post IDs.', 'wpmvc-website' ),
+                'description'       => __( 'IDs of posts, pages, and other post types will be excluded from the search. Separate IDs by commas.', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 15,
+        ],
+        'superbrowse_cache' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Cache results', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 20,
+        ],
+        'superbrowse_cache_minutes' => [
+                'type'              => 'number',
+                'label'             => __( 'Cache expiration time', 'wpmvc-website' ),
+                'description'       => __( 'Number of minutes to keep results in cache.', 'wpmvc-website' ),
+                'section'           => 'superbrowse',
+                'priority'          => 21,
+                'input_attrs'       => [
+                                        'min' => 5,
+                                        'max' => 1440,
+                                    ],
         ],
     ],
 

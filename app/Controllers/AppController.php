@@ -116,4 +116,23 @@ class AppController extends Controller
     {
         return home_url( '/' );
     }
+    /**
+     * Returns parsed and sanitized string of IDs.
+     * @since 1.0.8
+     * 
+     * @param string $text
+     * 
+     * @return string
+     */
+    public function sanitize_ids_string( $string )
+    {
+        return implode( ',', array_filter(
+            array_map( function( $id ) {
+                return empty( $id ) ? 0 : absint( trim( $id ) );
+            }, explode( ',', $string ) ),
+            function( $id ) {
+                return ! empty( $id );
+            }
+        ) );
+    }
 }

@@ -8,7 +8,7 @@ use WPMVCWebsite\Models\Page;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 
 if ( ! function_exists( 'get_the_color' ) ) {
@@ -63,7 +63,7 @@ if ( ! function_exists( 'get_page_model' ) ) {
 if ( ! function_exists( 'get_page_icon' ) ) {
     /**
      * Returns page property.
-     * @since 1.0.7
+     * @since 1.0.8
      *
      * @return string
      */
@@ -77,7 +77,7 @@ if ( ! function_exists( 'get_page_icon' ) ) {
 if ( ! function_exists( 'get_page_formatted_modified' ) ) {
     /**
      * Returns page property.
-     * @since 1.0.7
+     * @since 1.0.8
      *
      * @return string
      */
@@ -91,7 +91,7 @@ if ( ! function_exists( 'get_page_formatted_modified' ) ) {
 if ( ! function_exists( 'get_page_has_sidebar' ) ) {
     /**
      * Returns page property.
-     * @since 1.0.7
+     * @since 1.0.8
      *
      * @return string
      */
@@ -105,7 +105,7 @@ if ( ! function_exists( 'get_page_has_sidebar' ) ) {
 if ( ! function_exists( 'sanitize_copyright' ) ) {
     /**
      * Returns parsed and sanitized copyright text.
-     * @since 1.0.7
+     * @since 1.0.8
      * 
      * @param string $text
      * 
@@ -114,5 +114,20 @@ if ( ! function_exists( 'sanitize_copyright' ) ) {
     function sanitize_copyright( $text )
     {
         return theme()->{'_c_return_AppController@sanitize_copyright'}( $text );
+    }
+}
+
+if ( ! function_exists( 'sanitize_ids_string' ) ) {
+    /**
+     * Returns parsed and sanitized string of IDs.
+     * @since 1.0.8
+     * 
+     * @param string $text
+     * 
+     * @return string
+     */
+    function sanitize_ids_string( $string )
+    {
+        return theme()->{'_c_return_AppController@sanitize_ids_string'}( $string );
     }
 }

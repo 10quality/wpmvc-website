@@ -42,5 +42,7 @@ class Main extends Bridge
         $this->add_shortcode('code-line', 'ShortcodeController@code_line');
         $this->add_shortcode('callout', 'ShortcodeController@callout');
         $this->add_shortcode('youtube', 'ShortcodeController@youtube');
+        // Rest API
+        $this->add_action('rest_api_init', 'ApiController@init');
     }
 }
