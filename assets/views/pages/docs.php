@@ -43,7 +43,7 @@
 
                 <div class="doc-body">
                     <div class="content-inner">
-                        <?= $page->post_content ?>
+                        <?= do_shortcode( $page->post_content ) ?>
                     </div><!--//content-inner-->
                 </div><!--//doc-body-->
 

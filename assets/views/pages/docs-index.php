@@ -5,7 +5,7 @@
  *
  * @package WPMVCWebsite
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @version 1.0.8
  */
 ?>
 <?php get_header() ?>
@@ -33,7 +33,7 @@
                         'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                     ] ) ?>
                 </div>
-                <?= $page->post_content ?>
+                <?= do_shortcode( $page->post_content ) ?>
                 <?php do_action( 'wpmvc_after_page' ) ?>
             </div>
 
