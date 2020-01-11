@@ -135,4 +135,24 @@ class AppController extends Controller
             }
         ) );
     }
+    /**
+     * Returns superbrose available filter types.
+     * @since 1.0.8
+     * 
+     * @hook wpmvc_superbrowse_types
+     * 
+     * @param array $types
+     * 
+     * @return array
+     */
+    public function superbrowse_types( $types )
+    {
+        if ( get_theme_mod( 'superbrowse_page', true ) )
+            $types['page'] = get_theme_mod( 'superbrowse_page_name', __( 'Pages' ) );
+        if ( get_theme_mod( 'superbrowse_post', true ) )
+            $types['post'] = get_theme_mod( 'superbrowse_post_name', __( 'Posts' ) );
+        if ( get_theme_mod( 'superbrowse_addon', true ) )
+            $types['addon'] = get_theme_mod( 'superbrowse_addon_name', __( 'Add-ons', 'wpmvc-website' ) );
+        return $types;
+    }
 }

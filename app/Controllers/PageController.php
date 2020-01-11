@@ -48,6 +48,7 @@ class PageController extends Controller
      */
     public function on_save( &$page )
     {
+        $page->excerpt = Request::input('excerpt');
         // Get cards
         $cards = [];
         $icons = Request::input('meta_card_icons', []);

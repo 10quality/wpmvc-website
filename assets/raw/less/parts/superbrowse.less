@@ -1,0 +1,318 @@
+/**
+ * Superbrowse Styling.
+ *
+ * @author Ale Mostajo <info@10quality.com>
+ * @version 1.0.8
+ */
+
+#superbrowse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .admin-bar & {
+        padding-top: 32px;
+    }
+    .search-form {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: 125px;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+        form {
+            padding: 10px 20px;
+            border-radius: 0 0 5px 5px;
+            background-color: @text-color;
+            color: @smoky-white;
+            position: absolute;
+            top: -250px;
+            -webkit-transition: top 0.5s ease;
+            transition: top 0.5s ease;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+            input.search-input {
+                border-top: none;
+                border-right: none;
+                border-bottom: none;
+                border-left: 10px solid @color-primary;
+                outline: 0;
+                background-color: rgba(255, 255, 255, 0.20);
+                line-height: 35px;
+                font-size: 20px;
+                padding: 5px 5px 5px 10px;
+                width: 45vw;
+                @media screen and (max-width: 1350px) {
+                    width: 65vw;
+                }
+                @media screen and (max-width: 950px) {
+                    width: 85vw;
+                }
+                @media screen and (max-width: 668px) {
+                    width: 70vw;
+                }
+                .body-green & {
+                    border-color: @color-green;
+                }
+                .body-blue & {
+                    border-color: @color-blue;
+                }
+                .body-orange & {
+                    border-color: @color-orange;
+                }
+                .body-red & {
+                    border-color: @color-red;
+                }
+                .body-pink & {
+                    border-color: @color-pink;
+                }
+                .body-purple & {
+                    border-color: @color-purple;
+                }
+                &::placeholder {
+                    color: @light-grey;
+                }
+                &::-webkit-input-placeholder{
+                    color: @light-grey;
+                }
+                &::-ms-input-placeholder {
+                    color: @light-grey;
+                }
+                &::-ms-input-placeholder {
+                    color: @light-grey;
+                }
+            }//input.search-input
+            .superbrowse-filters {
+                .superbrowse-filter {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    padding-top: 10px;
+                    .filter-label {
+                        font-weight: 600;
+                        @media screen and (max-width: 425px) {
+                            display: none;
+                        }
+                    }
+                    .filter-checkbox {
+                        display: block;
+                        position: relative;
+                        padding-left: 25px;
+                        cursor: pointer;
+                        font-size: 13px;
+                        font-weight: normal;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+                            &:checked ~ .checkmark {
+                                background-color: @color-primary;
+                                .body-green & {
+                                    background-color: @color-green;
+                                }
+                                .body-blue & {
+                                    background-color: @color-blue;
+                                }
+                                .body-orange & {
+                                    background-color: @color-orange;
+                                }
+                                .body-red & {
+                                    background-color: @color-red;
+                                }
+                                .body-pink & {
+                                    background-color: @color-pink;
+                                }
+                                .body-purple & {
+                                    background-color: @color-purple;
+                                }
+                                &:after {
+                                    display: block;
+                                }
+                            }
+                        }
+                        .checkmark {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 20px;
+                            width: 20px;
+                            background-color: @smoky-grey;
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                display: none;
+                                left: 7px;
+                                top: 5px;
+                                width: 5px;
+                                height: 10px;
+                                border: solid white;
+                                border-width: 0 3px 3px 0;
+                                -webkit-transform: rotate(45deg);
+                                -ms-transform: rotate(45deg);
+                                transform: rotate(45deg);
+                            }
+                        }
+                        &:hover {
+                            input ~ .checkmark {
+                                background-color: @smoky-white;
+                            }
+                        }
+                    }//.filter-checkbox
+                }//.superbrowse-filter
+            }//.superbrowse-filters
+        }//form
+    }//.search-form
+    .superbrowse-close {
+        position: fixed;
+        right: -100px;
+        -webkit-transition: right 0.7s ease;
+        transition: right 0.7s ease;
+        top: 0;
+        font-size: 30px;
+        background-color: transparent;
+        border: none;
+        outline: 0;
+        color: white;
+        .admin-bar & {
+            top: 32px;
+        }
+        &:hover {
+            color: #F44336;
+        }
+        &:active {
+            color: #FF5722;
+        }
+    }//.superbrowse-close
+    .search-loader {
+        display: flex;
+        justify-content: center;
+        font-size: xx-large;
+        color: @color-primary;
+        .body-green & {
+            color: @color-green;
+        }
+        .body-blue & {
+            color: @color-blue;
+        }
+        .body-orange & {
+            color: @color-orange;
+        }
+        .body-red & {
+            color: @color-red;
+        }
+        .body-pink & {
+            color: @color-pink;
+        }
+        .body-purple & {
+            color: @color-purple;
+        }
+    }//.search-loader
+    .search-results {
+        width: 610px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: @smoky-white;
+        @media screen and (max-width: 668px) {
+            width: 100%;
+            padding: 0 10px;
+        }
+        .result {
+            width: 100%;
+            &.result-heading {
+                color: @color-primary;
+                text-shadow: 1px 1px 2px @text-color;
+                margin: 20px 0 10px;
+                .body-green & {
+                    color: @color-green;
+                }
+                .body-blue & {
+                    color: @color-blue;
+                }
+                .body-orange & {
+                    color: @color-orange;
+                }
+                .body-red & {
+                    color: @color-red;
+                }
+                .body-pink & {
+                    color: @color-pink;
+                }
+                .body-purple & {
+                    color: @color-purple;
+                }
+            }//&.result-heading
+            &.result-item {
+                background-color: @smoky-white;
+                color: @text-color;
+                text-decoration: none;
+                display: flex;
+                flex-direction: row;
+                padding: 10px;
+                .result-attachment {
+                    margin-right: 10px;
+                    img {
+                        max-width: 90px;
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .result-description {
+                    margin-top: 5px;
+                }
+                .result-title {
+                    margin: 0;
+                }
+                &:hover {
+                    background-color: @smoky-grey;
+                    .result-title {
+                        color: @color-primary;
+                        .body-green & {
+                            color: @color-green;
+                        }
+                        .body-blue & {
+                            color: @color-blue;
+                        }
+                        .body-orange & {
+                            color: @color-orange;
+                        }
+                        .body-red & {
+                            color: @color-red;
+                        }
+                        .body-pink & {
+                            color: @color-pink;
+                        }
+                        .body-purple & {
+                            color: @color-purple;
+                        }
+                    }
+                }
+            }//&.result-item
+        }//.result
+    }//.search-results
+    &.active {
+        .search-form {
+            form {
+                top: 0;
+            }
+        }
+        .superbrowse-close {
+            right: 5px;
+        }
+    }
+}//#superbrowse

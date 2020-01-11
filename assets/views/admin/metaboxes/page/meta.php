@@ -7,7 +7,7 @@
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 ?>
 <table class="form-table">
@@ -32,6 +32,17 @@
                 name="meta_icon"
                 value="<?php echo $model->meta_icon ?>"
             />
+        </td>
+    </tr>
+
+    <tr valign="top">
+        <th scope="row">Excerpt</th>
+        <td>
+            <textarea class="wide"
+                name="excerpt"
+                rows="5"
+                style="width:100%"
+            ><?php echo $model->excerpt ?></textarea>
         </td>
     </tr>
 

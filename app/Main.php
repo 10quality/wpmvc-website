@@ -44,5 +44,9 @@ class Main extends Bridge
         $this->add_shortcode('youtube', 'ShortcodeController@youtube');
         // Rest API
         $this->add_action('rest_api_init', 'ApiController@init');
+        // Superbrowse
+        $this->add_action('wp_footer', 'view@misc.superbrowse');
+        $this->add_action('wpmvc_superbrowse_filters', 'view@misc.superbrowse-filters');
+        $this->add_filter('wpmvc_superbrowse_types', 'AppController@superbrowse_types');
     }
 }

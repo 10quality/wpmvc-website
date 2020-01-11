@@ -12,7 +12,7 @@ use WPMVC\MVC\Models\PostModel as Model;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.7
+ * @version 1.0.8
  */
 class Page extends Model
 {
@@ -31,6 +31,7 @@ class Page extends Model
      * @var array
      */
     protected $aliases = [
+        'excerpt'               => 'post_excerpt',
         'cards_title'           => 'meta_cards_title',
         'cards'                 => 'meta_cards',
         'download_url'          => 'meta_download_url',

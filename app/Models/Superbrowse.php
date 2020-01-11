@@ -33,6 +33,7 @@ class Superbrowse extends Model
         // Attributes
         'object_id',
         'data_source',
+        'type',
         'title',
         'description',
         // Aliases
@@ -85,7 +86,14 @@ class Superbrowse extends Model
             ->select( '\'posts\' as `data_source`' )
             ->select( 'posts.post_title as `title`' )
             ->select( 'posts.post_excerpt as `description`' )
+            ->select( 'posts.post_type as `type`' )
             ->select( 'attachment.meta_value as `attachment_id`' )
+            ->select(
+                'CASE WHEN posts.post_type = \'page\' THEN 0'
+                    . ' WHEN posts.post_type = \'addon\' THEN 1'
+                    . ' WHEN posts.post_type = \'post\' THEN 2'
+                    . ' ELSE 3 END as `priority`'
+            )
             ->from( 'posts as `posts`' )
             ->join( 'postmeta as `attachment`', [
                 [
@@ -99,7 +107,9 @@ class Superbrowse extends Model
             ], true )
             ->where( [
                 'posts.post_status' => 'publish',
-            ] );
+            ] )
+            ->order_by( 'priority' )
+            ->order_by( 'posts.ID', 'DESC' );
         return $builder;
     }
     /**

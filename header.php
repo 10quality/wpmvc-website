@@ -75,7 +75,7 @@
                             </div>
                             <div class="sub-nav-section">
                                 <?php if ( get_theme_mod( 'allow_search', true ) ) : ?>
-                                    <button role="button"
+                                    <button role="superbrowse-caller"
                                         title="<?php _e( 'Search' ) ?>"
                                         class="button button-nav nav-search"
                                     ><i class="fa fa-search"></i></button>

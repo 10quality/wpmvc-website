@@ -48,7 +48,7 @@ return [
                             ],
                             [
                                 'asset'     => 'js/app.js',
-                                'dep'       => ['vendor-wpmvcwebsite'],
+                                'dep'       => ['vendor-wpmvcwebsite', 'wp-api'],
                                 'footer'    => true,
                             ],
                         ],
