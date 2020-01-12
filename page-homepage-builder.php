@@ -14,7 +14,11 @@
     <div class="container">
         <div class="branding">
             <h1 class="logo">
-                <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                <?php if ( has_homepage_logo() ) : ?>
+                    <span aria-hidden="true" class="icon_documents_alt icon">
+                        <img src="<?php echo esc_url( get_homepage_logo_url() ) ?>" alt="logo"/>
+                    </span>
+                <?php endif ?>
                 <span class="text-highlight"><?= get_theme_mod( 'title_highlight' ) ?></span><span class="text-bold"><?= get_theme_mod( 'title_bold' ) ?></span>
             </h1>
         </div><!--//branding-->

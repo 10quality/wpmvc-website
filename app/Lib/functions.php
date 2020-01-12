@@ -8,7 +8,7 @@ use WPMVCWebsite\Models\Page;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.0.9
  */
 
 if ( ! function_exists( 'get_the_color' ) ) {
@@ -129,5 +129,31 @@ if ( ! function_exists( 'sanitize_ids_string' ) ) {
     function sanitize_ids_string( $string )
     {
         return theme()->{'_c_return_AppController@sanitize_ids_string'}( $string );
+    }
+}
+
+if ( ! function_exists( 'has_homepage_logo' ) ) {
+    /**
+     * Returns flag indicating if there is a homepage logo available.
+     * @since 1.0.9
+     * 
+     * @return bool
+     */
+    function has_homepage_logo()
+    {
+        return theme()->{'_c_return_AppController@has_logo'}();
+    }
+}
+
+if ( ! function_exists( 'get_homepage_logo_url' ) ) {
+    /**
+     * Returns homepage logo url.
+     * @since 1.0.9
+     * 
+     * @return string
+     */
+    function get_homepage_logo_url()
+    {
+        return theme()->{'_c_return_AppController@get_logo_url'}();
     }
 }

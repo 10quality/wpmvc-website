@@ -117,6 +117,10 @@ return [
             'default'               => 120,
             'sanitize_callback'     => 'absint',
         ],
+        'homepage_logo' => [
+            'default'               => 0,
+            'sanitize_callback'     => 'absint',
+        ],
     ],
 
     // Controlles
@@ -298,6 +302,13 @@ return [
                                         'min' => 5,
                                         'max' => 1440,
                                     ],
+        ],
+        'homepage_logo' => [
+                'type'              => 'media',
+                'label'             => __( 'Homepage Logo', 'wpmvc-website' ),
+                'section'           => 'static_front_page',
+                'mime'              => 'image',
+                'priority'          => 10,
         ],
     ],
 

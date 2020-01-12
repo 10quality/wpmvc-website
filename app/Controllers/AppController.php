@@ -10,7 +10,7 @@ use WPMVC\MVC\Controller;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.0.9
  */
 class AppController extends Controller
 {
@@ -154,5 +154,27 @@ class AppController extends Controller
         if ( get_theme_mod( 'superbrowse_addon', true ) )
             $types['addon'] = get_theme_mod( 'superbrowse_addon_name', __( 'Add-ons', 'wpmvc-website' ) );
         return $types;
+    }
+    /**
+     * Returns flag indicating if there is a homepage logo available.
+     * @since 1.0.9
+     * 
+     * @return bool
+     */
+    public function has_logo()
+    {
+        $logo = get_theme_mod( 'homepage_logo', 0 );
+        return ! empty( $logo );
+    }
+    /**
+     * Returns homepage logo url.
+     * @since 1.0.9
+     * 
+     * @return string|null
+     */
+    public function get_logo_url()
+    {
+        $logo_url = wp_get_attachment_url( get_theme_mod( 'homepage_logo', 0 ) );
+        return is_wp_error( $logo_url ) || empty( $logo_url ) ? null : $logo_url;
     }
 }
