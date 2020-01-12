@@ -5,12 +5,14 @@
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.0.9
  */
 ?><section id="superbrowse" style="display:none">
     <div role="form" class="search-form">
         <form class="superbrowse-form">
-            <input type="search" name="q" class="search-input" placeholder="<?php _e( 'Search [press Enter]...', 'wpmvc-website' ) ?>"/>
+            <input type="search" name="q" class="search-input"
+                autocomplete="off"
+                placeholder="<?php _e( 'Search [press Enter]...', 'wpmvc-website' ) ?>"/>
             <div class="superbrowse-filters">
                 <?php do_action( 'wpmvc_superbrowse_filters' ) ?>
             </div>
