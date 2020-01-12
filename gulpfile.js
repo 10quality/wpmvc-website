@@ -58,6 +58,7 @@ gulp.task('vendorjs', function() {
             './node_modules/bootstrap/dist/js/bootstrap.min.js',
             './node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             './node_modules/jquery.scrollto/jquery.scrollTo.min.js',
+            './node_modules/clipboard/dist/clipboard.min.js',
         ])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('./assets/js'));
