@@ -72,14 +72,14 @@ class ThemeController extends Controller
     public function sidebars()
     {
         register_sidebar( [
-            'name'          => 'Pages',
+            'name'          => __( 'Right sidebar' ),
             'id'            => 'wpmvc-page-right',
-            'description'   => __( 'Sidebar located on the right side of pages, when their flag is activated.', 'wpmvc-website' ),
+            'description'   => __( 'Sidebar located on the right side of templates.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>'
         ] );
         register_sidebar( [
-            'name'          => 'Footer',
+            'name'          => __( 'Footer' ),
             'id'            => 'wpmvc-footer',
             'description'   => __( 'Sidebar located at the footer of the website.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',

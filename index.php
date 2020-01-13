@@ -31,9 +31,12 @@
                             <?php endwhile ?>
                         </section>
                     <?php endif ?>
+                    <section class="pagination">
+                        <?php posts_nav_link() ?>
+                    </section>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <section class="widgets-wrapper">
+                    <section class="widgets widgets-wrapper">
                         <?php if ( is_active_sidebar( 'wpmvc-page-right' ) ) : ?>
                             <?php dynamic_sidebar( 'wpmvc-page-right' ) ?>
                         <?php else : ?>
