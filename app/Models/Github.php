@@ -206,7 +206,6 @@ class Github extends Model
             $github = $this;
             $release = Cache::remember( 'wpmvc_repo_release', 60, function() use( &$github ) {
                 $releases = $github->api( 'repos/{repo}/releases' );
-                vdump($releases);
                 return $releases && count( $releases ) ? $releases[0] : null;
             } );
             if ( empty( $release ) )
