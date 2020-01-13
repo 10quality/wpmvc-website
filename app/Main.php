@@ -11,7 +11,7 @@ use WPMVC\Bridge;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.0.10
  */
 class Main extends Bridge
 {
@@ -48,5 +48,15 @@ class Main extends Bridge
         $this->add_action('wp_footer', 'view@misc.superbrowse');
         $this->add_action('wpmvc_superbrowse_filters', 'view@misc.superbrowse-filters');
         $this->add_filter('wpmvc_superbrowse_types', 'AppController@superbrowse_types');
+        // Github
+        $this->add_filter('wpmvc_github_repos', 'GithubController@repos');
+        $this->add_widget('GithubDownloadButtonWidget');
+    }
+    public function on_admin()
+    {
+        // Github
+        $this->add_action('admin_init', 'GithubController@init');
+        $this->add_action('wp_dashboard_setup', 'GithubController@dashboard_setup');
+        $this->add_action('admin_notices', 'GithubController@github_notice');
     }
 }

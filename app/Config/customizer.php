@@ -23,6 +23,10 @@ return [
             'title'                 => __( 'Superbrowse', 'wpmvc-website' ),
             'priority'              => 140,
         ],
+        'github' => [
+            'title'                 => __( 'Github', 'wpmvc-website' ),
+            'priority'              => 190,
+        ],
     ],
 
     // Settings
@@ -120,6 +124,22 @@ return [
         'homepage_logo' => [
             'default'               => 0,
             'sanitize_callback'     => 'absint',
+        ],
+        'github_client_id' => [
+            'default'               => '',
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'github_client_secret' => [
+            'default'               => '',
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'github_account' => [
+            'default'               => '',
+            'sanitize_callback'     => 'sanitize_text_field',
+        ],
+        'github_repo' => [
+            'default'               => '',
+            'sanitize_callback'     => 'sanitize_text_field',
         ],
     ],
 
@@ -309,6 +329,35 @@ return [
                 'section'           => 'static_front_page',
                 'mime'              => 'image',
                 'priority'          => 10,
+        ],
+        'github_client_id' => [
+                'label'             => __( 'Client ID', 'wpmvc-website' ),
+                'description'       => __( 'Github OAuth Apps client ID.', 'wpmvc-website' ),
+                'section'           => 'github',
+                'priority'          => 1,
+        ],
+        'github_client_secret' => [
+                'label'             => __( 'Client Secret', 'wpmvc-website' ),
+                'description'       => __( 'Github OAuth Apps client secret.', 'wpmvc-website' ),
+                'section'           => 'github',
+                'priority'          => 2,
+        ],
+        'github_account' => [
+                'label'             => __( 'Account', 'wpmvc-website' ),
+                'description'       => __( 'Github account.', 'wpmvc-website' ),
+                'section'           => 'github',
+                'priority'          => 3,
+        ],
+        'github_repo' => [
+                'type'              => 'select',
+                'label'             => __( 'Repository', 'wpmvc-website' ),
+                'description'       => sprintf(
+                        __( 'The list repositories will be available once Github has authorized permissions (Check the notices on the Admin Dashboard). The application callback should be <code>%s</code>.', 'wpmvc-website' ),
+                        add_query_arg( 'github_oauth', '1', admin_url( '/' ) )
+                    ),
+                'section'           => 'github',
+                'priority'          => 20,
+                'choices'           => apply_filters( 'wpmvc_github_repos', [] ),
         ],
     ],
 

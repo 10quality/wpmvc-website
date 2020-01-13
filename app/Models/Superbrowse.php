@@ -7,7 +7,7 @@ use TenQuality\WP\Database\QueryBuilder;
 use WPMVC\MVC\Models\Common\Attachment;
 
 /**
- * Superbrowse data controller.
+ * Superbrowse data model.
  *
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
