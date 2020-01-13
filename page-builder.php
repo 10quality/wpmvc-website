@@ -5,7 +5,7 @@
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.0.11
  */
 ?>
 <?php get_header() ?>
@@ -14,18 +14,6 @@
 
     <div class="doc-wrapper">
         <div class="container">
-
-            <div id="doc-header" class="doc-header text-center">
-                <h1 class="doc-title">
-                    <span><i class="fa <?= get_page_icon() ?>"></i> </span>
-                    <span><?php the_title() ?></span>
-                </h1>
-                <div class="meta">
-                    <span><i class="fa fa-clock-o"></i> </span>
-                    <span><?php _e( 'Last updated:', 'wpmvc' ) ?> </span>
-                    <span><?= get_page_formatted_modified() ?></span>
-                </div>
-            </div><!--//doc-header-->
 
             <div class="doc-body">
                 <div class="row">
