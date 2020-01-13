@@ -11,7 +11,7 @@ use WPMVC\Bridge;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.10
+ * @version 1.0.11
  */
 class Main extends Bridge
 {
@@ -51,6 +51,7 @@ class Main extends Bridge
         // Github
         $this->add_filter('wpmvc_github_repos', 'GithubController@repos');
         $this->add_widget('GithubDownloadButtonWidget');
+        $this->add_action('wpmvc_download_button_label', 'GithubController@download_button_label');
     }
     public function on_admin()
     {

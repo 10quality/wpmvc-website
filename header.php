@@ -4,7 +4,7 @@
  * Wordpress template.
  *
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.8
+ * @version 1.0.11
  */
 ?>
 <!DOCTYPE html>
@@ -55,6 +55,16 @@
                         <div class="nav-section sub-nav">
                             <div class="sub-nav-section">
                                 <?php do_action( 'wpmvc_nav_right' ) ?>
+                                <?php if ( get_theme_mod( 'allow_download_button', false ) ) : ?>
+                                    <a role="button"
+                                        class="nav-link desktop-only nav-download btn btn-themed"
+                                        href="<?php echo get_permalink( get_theme_mod( 'download_page', 0 ) ) ?>"
+                                        title="<?php _e( 'Download or clone the latest release', 'wpmvc-website' ) ?>"
+                                    >
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                        <?php do_action( 'wpmvc_download_button_label' ) ?>
+                                    </a>
+                                <?php endif ?>
                                 <?php if ( get_theme_mod( 'allow_login', true ) ) : ?>
                                     <?php if ( is_user_logged_in() ) : ?>
                                         <a role="button"

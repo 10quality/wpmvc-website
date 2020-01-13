@@ -2,6 +2,7 @@
 
 namespace WPMVCWebsite\Models;
 
+use WPMVC\Cache;
 use WPMVC\MVC\Traits\FindTrait;
 use WPMVC\MVC\Models\OptionModel as Model;
 
@@ -11,7 +12,7 @@ use WPMVC\MVC\Models\OptionModel as Model;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.10
+ * @version 1.0.11
  */
 class Github extends Model
 {
@@ -43,6 +44,7 @@ class Github extends Model
         'api_scope'     => 'field_scope',
         'can_auth'      => 'func_get_can_auth',
         'is_ready'      => 'func_get_is_ready',
+        'release'       => 'func_get_release',
     ];
     /**
      * Hidden attributes.
@@ -56,6 +58,7 @@ class Github extends Model
         'customizer_client_secret',
         'code',
         'state',
+        'release',
     ];
     /**
      * Method for alias property `client_id`.
@@ -190,6 +193,27 @@ class Github extends Model
             'redirect_uri'      => $this->redirect_url,
             'state'             => $this->state,
         ];
+    }
+    /**
+     * Returns latest release object.
+     * @since 1.0.11
+     * 
+     * @return object
+     */
+    protected function get_release()
+    {
+        if ( $this->is_ready && $this->repo ) {
+            $github = $this;
+            $release = Cache::remember( 'wpmvc_repo_release', 60, function() use( &$github ) {
+                $releases = $github->api( 'repos/{repo}/releases' );
+                vdump($releases);
+                return $releases && count( $releases ) ? $releases[0] : null;
+            } );
+            if ( empty( $release ) )
+                Cache::forget( 'wpmvc_repo_release' );
+            return $release;
+        }
+        return null;
     }
     /**
      * Returns api response.

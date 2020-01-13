@@ -9,7 +9,7 @@ use WPMVCWebsite\Models\Github;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.10
+ * @version 1.0.11
  */
 class GithubDownloadButtonWidget extends WP_Widget
 {
@@ -56,10 +56,7 @@ class GithubDownloadButtonWidget extends WP_Widget
         if ( ! $github->is_ready || $github->repo === null )
             return;
         // Get latest release
-        $instance['release'] = Cache::remember( 'wpmvc_repo_release', 60, function() use( &$github ) {
-            $releases = $github->api( 'repos/{repo}/releases' );
-            return $releases && count( $releases ) ? $releases[0] : null;
-        } );
+        $instance['release'] = $github->release;
         if ( empty( $instance['release'] ) )
             return;
         // ----------------

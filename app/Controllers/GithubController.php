@@ -12,7 +12,7 @@ use WPMVCWebsite\Models\Github;
  * @author Ale Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.10
+ * @version 1.0.11
  */
 class GithubController extends Controller
 {
@@ -112,10 +112,20 @@ class GithubController extends Controller
             'github'    => Github::find(),
             'release'   => null,
         ];
-        if ( $args['github']->is_ready && $args['github']->repo ) {
-            $releases = $args['github']->api( 'repos/{repo}/releases' );
-            $args['release'] = $releases ? $releases[0] : null;
-        }
+        $args['release'] = $args['github']->release;
         $this->view->show( 'admin.github.dashboard-widget', $args );
+    }
+    /**
+     * Displays version name.
+     * @since 1.0.11
+     * 
+     * @hook wpmvc_download_button_label
+     */
+    public function download_button_label()
+    {
+        $github = Github::find();
+        $release = $github->release;
+        if ( $release )
+            echo esc_attr( $release->tag_name );
     }
 }

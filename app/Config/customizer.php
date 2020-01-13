@@ -50,6 +50,13 @@ return [
         'allow_mobile_menu' => [
             'default'               => false,
         ],
+        'allow_download_button' => [
+            'default'               => false,
+        ],
+        'download_page' => [
+            'default'               => 0,
+            'sanitize_callback'     => 'absint',
+        ],
         'login_handler' => [
             'default'               => 'wp',
             'sanitize_callback'     => 'sanitize_text_field',
@@ -182,6 +189,19 @@ return [
                 'description'       => __( 'This menu will only appear on mobile resolutions. It needs to be configured with a menu plugin (like Mega Menu).', 'wpmvc-website' ),
                 'section'           => 'header',
                 'priority'          => 55,
+        ],
+        'allow_download_button' => [
+                'type'              => 'checkbox',
+                'label'             => __( 'Allow download button', 'wpmvc-website' ),
+                'description'       => __( 'This settings will only work if github integration is completed.', 'wpmvc-website' ),
+                'section'           => 'header',
+                'priority'          => 70,
+        ],
+        'download_page' => [
+                'type'              => 'dropdown-pages',
+                'label'             => __( 'Download button link', 'wpmvc-website' ),
+                'section'           => 'header',
+                'priority'          => 71,
         ],
         'login_handler' => [
                 'type'              => 'select',
