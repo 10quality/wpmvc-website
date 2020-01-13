@@ -66,12 +66,7 @@ class Github extends Model
      */
     protected function get_client_id()
     {
-        if ( ! array_key_exists( 'customizer_client_id', $this->attributes ) ) {
-            $this->attributes['customizer_client_id'] = get_theme_mod( 'github_client_id', '' );
-            if ( empty( $this->attributes['customizer_client_id'] ) )
-                $this->attributes['customizer_client_id'] = null;
-        }
-        return $this->attributes['customizer_client_id'];
+        return get_theme_mod( 'github_client_id', '' );
     }
     /**
      * Method for alias property `client_secret`.
@@ -82,12 +77,7 @@ class Github extends Model
      */
     protected function get_client_secret()
     {
-        if ( ! array_key_exists( 'customizer_client_secret', $this->attributes ) ) {
-            $this->attributes['customizer_client_secret'] = get_theme_mod( 'github_client_secret', '' );
-            if ( empty( $this->attributes['customizer_client_secret'] ) )
-                $this->attributes['customizer_client_secret'] = null;
-        }
-        return $this->attributes['customizer_client_secret'];
+        return get_theme_mod( 'github_client_secret', '' );
     }
     /**
      * Method for alias property `account`.
@@ -98,12 +88,7 @@ class Github extends Model
      */
     protected function get_account()
     {
-        if ( ! array_key_exists( 'customizer_account', $this->attributes ) ) {
-            $this->attributes['customizer_account'] = get_theme_mod( 'github_account', '' );
-            if ( empty( $this->attributes['customizer_account'] ) )
-                $this->attributes['customizer_account'] = null;
-        }
-        return $this->attributes['customizer_account'];
+        return get_theme_mod( 'github_account', '' );
     }
     /**
      * Method for alias property `repo`.
@@ -114,12 +99,7 @@ class Github extends Model
      */
     protected function get_repo()
     {
-        if ( ! array_key_exists( 'customizer_repo', $this->attributes ) ) {
-            $this->attributes['customizer_repo'] = get_theme_mod( 'github_repo', '' );
-            if ( empty( $this->attributes['customizer_repo'] ) )
-                $this->attributes['customizer_repo'] = null;
-        }
-        return $this->attributes['customizer_repo'];
+        return get_theme_mod( 'github_repo', '' );
     }
     /**
      * Method for alias property `authorize_url`.
@@ -225,7 +205,7 @@ class Github extends Model
     {
         $endpoint = str_replace( '{user}' , $this->account, $endpoint );
         $endpoint = str_replace( '{repo}' , $this->repo, $endpoint );
-        return json_decode( get_curl_contents(
+        $response = json_decode( get_curl_contents(
             theme()->config->get( 'github.api_url' ) . $endpoint,
             $method,
             $request,
@@ -233,5 +213,15 @@ class Github extends Model
                 'Authorization: ' . $this->token_type . ' ' . $this->access_token,
             ]
         ) );
+        if ( $response->message && $response->documentation_url ) {
+            if ( $response->message !== 'Not Found' ) {
+                $this->access_token = null;
+                $this->token_type = null;
+                $this->api_scope = null;
+                $this->save();
+            }
+            return null;
+        }
+        return $response;
     }
 }

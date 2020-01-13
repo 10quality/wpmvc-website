@@ -87,7 +87,7 @@ class GithubController extends Controller
         if ( $github->is_ready ) {
             $data = $github->api( 'user/repos', ['per_page' => 100] );
             foreach ( $data as $repo ) {
-                $repos[$repo->name] = $repo->full_name;
+                $repos[$repo->full_name] = $repo->full_name;
             }
         }
         return $repos;
@@ -113,8 +113,8 @@ class GithubController extends Controller
             'release'   => null,
         ];
         if ( $args['github']->is_ready && $args['github']->repo ) {
-            $releases = $args['github']->api( 'repos/{user}/{repo}/releases' );
-            $args['release'] = $releases[0];
+            $releases = $args['github']->api( 'repos/{repo}/releases' );
+            $args['release'] = $releases ? $releases[0] : null;
         }
         $this->view->show( 'admin.github.dashboard-widget', $args );
     }

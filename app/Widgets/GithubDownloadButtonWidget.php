@@ -57,8 +57,8 @@ class GithubDownloadButtonWidget extends WP_Widget
             return;
         // Get latest release
         $instance['release'] = Cache::remember( 'wpmvc_repo_release', 60, function() use( &$github ) {
-            $releases = $github->api( 'repos/{user}/{repo}/releases' );
-            return count( $releases ) ? $releases[0] : null;
+            $releases = $github->api( 'repos/{repo}/releases' );
+            return $releases && count( $releases ) ? $releases[0] : null;
         } );
         if ( empty( $instance['release'] ) )
             return;
