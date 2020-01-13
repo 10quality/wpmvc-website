@@ -1,0 +1,85 @@
+/**
+ * Blog Styling.
+ *
+ * @author Ale Mostajo <info@10quality.com>
+ * @version 1.1.0
+ */
+
+// index.php
+section.posts {
+    article {
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-bottom: 40px;
+        @media screen and (max-width: 880px) {
+            margin-bottom: 35px;
+        }
+        @media screen and (max-width: 600px) {
+            margin-bottom: 20px;
+        }
+        .attachment {
+            .loop-link {
+                width: 150px;
+                min-height: 150px;
+                display: block;
+                background-color: @color-primary;
+                .body-green & {
+                    background-color: @color-green;
+                }
+                .body-blue & {
+                    background-color: @color-blue;
+                }
+                .body-orange & {
+                    background-color: @color-orange;
+                }
+                .body-red & {
+                    background-color: @color-red;
+                }
+                .body-pink & {
+                    background-color: @color-pink;
+                }
+                .body-purple & {
+                    background-color: @color-purple;
+                }
+                &:hover {
+                    opacity: 0.7;
+                }
+                @media screen and (max-width: 880px) {
+                    width: 100px;
+                    min-height: 100px;
+                }
+                @media screen and (max-width: 380px) {
+                    width: 75px;
+                    min-height: 75px;
+                }
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .details {
+            width: 100%;
+            padding: 4px 20px 20px;
+            .post-title {
+                margin: 0 0 10px;
+                font-size: 25px;
+                @media screen and (max-width: 880px) {
+                    font-size: 22px;
+                }
+            }
+            .meta {
+                font-size: smaller;
+            }
+            .excerpt {
+                p {
+                    margin: 0;
+                    font-size: small;
+                }
+            }
+        }
+    }//article
+}//section.posts

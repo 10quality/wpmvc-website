@@ -52,6 +52,8 @@ class Main extends Bridge
         $this->add_filter('wpmvc_github_repos', 'GithubController@repos');
         $this->add_widget('GithubDownloadButtonWidget');
         $this->add_action('wpmvc_download_button_label', 'GithubController@download_button_label');
+        // Templating
+        $this->add_filter('wpmvc_index_title', 'ThemeController@index_title');
     }
     public function on_admin()
     {

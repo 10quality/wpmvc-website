@@ -11,7 +11,7 @@ use WPMVC\Cache;
  * @author Alejandro Mostajo <info@10quality.com>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.1.0
  */
 class ThemeController extends Controller
 {
@@ -101,5 +101,25 @@ class ThemeController extends Controller
         if ( in_array( 'current-menu-item', $classes ) )
             $classes[] = 'active';
         return $classes;
+    }
+    /**
+     * Returns index.php title.
+     * @since 1.1.0
+     * 
+     * @hook wpmvc_index_title
+     * 
+     * @param string $title
+     * 
+     * @return string
+     */
+    public function index_title( $title )
+    {
+        if ( is_home() )
+            return __( 'Blog' );
+        if ( is_archive() || is_tax() )
+            return __( 'Archive' );
+        if ( is_search() )
+            return __( 'Search', 'wpmvc-website' );
+        return $title;
     }
 }
