@@ -4,41 +4,35 @@
  *
  * @package WPMVCWebsite
  * @author Alejandro Mostajo <info@10quality.com>
- * @version 1.0.0
+ * @version 1.1.0
  */
 ?>
 <?php get_header() ?>
-
 <?php if ( have_posts() ) : ?>
-
     <?php while ( have_posts() ) : ?>
-
         <?php the_post() ?>
         <div class="doc-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 col-sm-8">
+                    <div class="col-md-9 col-md-8 col-sm-8 col-xs-12">
                         <div class="post-body">
-                            <?php theme()->view('posts.article') ?>
+                            <?php get_template_part( 'content', 'single' ) ?>
                         </div>
                     </div><!--.col-->
-                    <div class="col-md-3 col-sm-4">
-                        <div class="widgets-wrapper">
-                            <?php if ( is_active_sidebar( 'wpmvc-post-right' ) ) : ?>
-                                <?php dynamic_sidebar( 'wpmvc-post-right' ) ?>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <section class="widgets widgets-wrapper">
+                            <?php if ( is_active_sidebar( 'wpmvc-single-right' ) ) : ?>
+                                <?php dynamic_sidebar( 'wpmvc-single-right' ) ?>
                             <?php else : ?>
                                 <?php theme()->view( 'misc.no-widgets' ) ?>
                             <?php endif ?>
-                        </div>
+                        </section>
                     </div><!--.col-->
                 </div><!--.row-->
-            </div>
-        </div>
-
+            </div><!--container-->
+        </div><!--doc-wrapper-->
     <?php endwhile ?>
-
 <?php else : ?>
     <?php theme()->view('misc.no-post-found') ?>
 <?php endif ?>
-
 <?php get_footer() ?>

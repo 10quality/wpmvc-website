@@ -73,8 +73,15 @@ class ThemeController extends Controller
     {
         register_sidebar( [
             'name'          => __( 'Right sidebar' ),
-            'id'            => 'wpmvc-page-right',
+            'id'            => 'wpmvc-index-right',
             'description'   => __( 'Sidebar located on the right side of templates.', 'wpmvc-website' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>'
+        ] );
+        register_sidebar( [
+            'name'          => __( 'Right sidebar (Single)' ),
+            'id'            => 'wpmvc-single-right',
+            'description'   => __( 'Sidebar located on the right side of "single" templates.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>'
         ] );

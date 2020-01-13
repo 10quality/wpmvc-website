@@ -37,8 +37,8 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                     <section class="widgets widgets-wrapper">
-                        <?php if ( is_active_sidebar( 'wpmvc-page-right' ) ) : ?>
-                            <?php dynamic_sidebar( 'wpmvc-page-right' ) ?>
+                        <?php if ( is_active_sidebar( 'wpmvc-index-right' ) ) : ?>
+                            <?php dynamic_sidebar( 'wpmvc-index-right' ) ?>
                         <?php else : ?>
                             <?php theme()->view( 'misc.no-widgets' ) ?>
                         <?php endif ?>
