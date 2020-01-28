@@ -13,6 +13,7 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var wpmvc = require('gulp-wpmvc');
+var deploybot = require('gulp-wpmvc-deploybot');
 // @since 1.0.1
 var less = require('gulp-less');
 var concat = require('gulp-concat');
@@ -22,6 +23,7 @@ var config = JSON.parse(fs.readFileSync('./package.json'));
 
 // Init WPMVC default tasks.
 wpmvc(gulp, config);
+deploybot(gulp, config);
 
 // --------------
 // START - CUSTOM TASKS
