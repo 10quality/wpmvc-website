@@ -33,15 +33,19 @@ class GithubController extends Controller
                     // Exchange code
                     $code = sanitize_text_field( Request::input( 'code' ) );
                     $state = sanitize_text_field( Request::input( 'state' ) );
-                    if ( empty( $code ) || empty( $state ) || $github->state != $state )
+                    if ( empty( $code )
+                        || empty( $state )
+                        || $github->state != $state
+                    ) {
                         break;
+                    }
                     // Request token
-                    $response = json_decode( get_curl_contents(
+                    $response = json_decode( get_curl_contents( 
                         $github->token_url,
                         'POST',
                         $github->get_token_request( $code ),
-                        ['Accept: application/json']
-                    ) );
+                        [ 'Accept: application/json' ]
+                     ) );
                     if ( $response->access_token ) {
                         $github->access_token = $response->access_token;
                         $github->token_type = $response->token_type;
@@ -61,14 +65,14 @@ class GithubController extends Controller
     public function github_notice()
     {
         $github = Github::find();
-        if ( $github->can_auth && ! $github->is_ready ) {
+        if ( $github->can_auth && !$github->is_ready ) {
             // Update state code
             if ( Request::input( 'github_oauth', false ) === false ) {
                 $github->state = uniqid();
                 $github->save();
             }
             // Show notice
-            $this->view->show( 'admin.github.notice', ['github' => &$github] );
+            $this->view->show( 'admin.github.notice', [ 'github' => &$github ] );
         }
     }
     /**
@@ -85,7 +89,7 @@ class GithubController extends Controller
     {
         $github = Github::find();
         if ( $github->is_ready ) {
-            $data = $github->api( 'user/repos', ['per_page' => 100] );
+            $data = $github->api( 'user/repos', [ 'per_page' => 100 ] );
             foreach ( $data as $repo ) {
                 $repos[$repo->full_name] = $repo->full_name;
             }
@@ -100,7 +104,7 @@ class GithubController extends Controller
      */
     public function dashboard_setup()
     {
-        wp_add_dashboard_widget( 'wpmvc_github', __( 'Github' ), [&$this, 'dashboard_widget'] );
+        wp_add_dashboard_widget( 'wpmvc_github', __( 'Github' ), [ &$this, 'dashboard_widget' ] );
     }
     /**
      * Displays dashboard widget.
@@ -108,10 +112,7 @@ class GithubController extends Controller
      */
     public function dashboard_widget()
     {
-        $args = [
-            'github'    => Github::find(),
-            'release'   => null,
-        ];
+        $args = [ 'github' => Github::find(), 'release' => null ];
         $args['release'] = $args['github']->release;
         $this->view->show( 'admin.github.dashboard-widget', $args );
     }
@@ -125,7 +126,8 @@ class GithubController extends Controller
     {
         $github = Github::find();
         $release = $github->release;
-        if ( $release )
+        if ( $release ) {
             echo esc_attr( $release->tag_name );
+        }
     }
 }

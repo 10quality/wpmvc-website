@@ -2,7 +2,6 @@
 
 use WPMVC\Cache;
 use WPMVCWebsite\Models\Github;
-
 /**
  * Github download button Widget.
  *
@@ -33,14 +32,11 @@ class GithubDownloadButtonWidget extends WP_Widget
     {
         $this->main = get_bridge( 'theme' );
         $this->github = Github::find();
-        parent::__construct(
+        parent::__construct( 
             'github_download_button',
             __( 'Github Download Button', 'wpmvc-website' ),
-            [
-                'classname'     => 'GithubDownloadButtonWidget',
-                'description'   => __( 'Displays Github\'s latest release download button of the selected repository (in Customize).', 'wpmvc-website' ),
-            ]
-        );
+            [ 'classname' => 'GithubDownloadButtonWidget', 'description' => __( 'Displays Github\'s latest release download button of the selected repository (in Customize).', 'wpmvc-website' ) ]
+         );
     }
     /**
      * Widget display.
@@ -53,20 +49,24 @@ class GithubDownloadButtonWidget extends WP_Widget
     public function widget( $args, $instance )
     {
         $github = $this->github;
-        if ( ! $github->is_ready || $github->repo === null )
+        if ( !$github->is_ready || $github->repo === null ) {
             return;
+        }
         // Get latest release
         $instance['release'] = $github->release;
-        if ( empty( $instance['release'] ) )
+        if ( empty( $instance['release'] ) ) {
             return;
+        }
         // ----------------
-        if ( $instance['include_wrapper'] )
+        if ( $instance['include_wrapper'] ) {
             echo $args['before_widget'];
+        }
         // ----------------
         $this->main->view( 'widgets.github_download_button.widget', $instance );
         // ----------------
-        if ( $instance['include_wrapper'] )
+        if ( $instance['include_wrapper'] ) {
             echo $args['after_widget'];
+        }
     }
     /**
      * Widget update.
@@ -77,7 +77,7 @@ class GithubDownloadButtonWidget extends WP_Widget
      * @param array $old_instance Widget instance.
      *
      * @return array
-     */ 
+     */
     public function update( $new_instance, $old_instance )
     {
         $instance = $new_instance;
@@ -97,42 +97,39 @@ class GithubDownloadButtonWidget extends WP_Widget
     public function form( $instance )
     {
         // ----------------
-        $instance = wp_parse_args( (array)$instance, [
-            'label'             => __( 'Download' ),
-            'type'              => 'zipball',
-            'color'             => 'btn-themed',
-            'size'              => '',
-            'include_label'     => true,
-            'include_version'   => true,
-            'include_type'      => true,
-            'include_wrapper'   => false,
+        $instance = wp_parse_args( ( array ) $instance, [
+            'label' => __( 'Download' ),
+            'type' => 'zipball',
+            'color' => 'btn-themed',
+            'size' => '',
+            'include_label' => true,
+            'include_version' => true,
+            'include_type' => true,
+            'include_wrapper' => false,
         ] );
         // ----------------
         $this->main->view( 'widgets.github_download_button.form', [
-            'widget'    => $this,
-            'instance'  => $instance,
-            'types'     => apply_filters( 'wpmvc_widget_github_download_button_types', [
-                            'zipball'   => 'Zip',
-                            'tarball'   => 'Tar.gz',
-                        ] ),
-            'colors'    => apply_filters( 'wpmvc_widget_github_download_button_colors', [
-                            'btn-themed'    => __( 'Selected by template', 'wpmvc-website' ),
-                            'btn-primary'   => __( 'Cyan' ),
-                            'btn-green'     => __( 'Green' ),
-                            'btn-blue'      => __( 'Blue' ),
-                            'btn-orange'    => __( 'Orange' ),
-                            'btn-red'       => __( 'Red' ),
-                            'btn-pink'      => __( 'Pink' ),
-                            'btn-purple'    => __( 'Purple' ),
-                        ] ),
-            'sizes'     => apply_filters( 'wpmvc_widget_github_download_button_sizes', [
-                            ''              => __( 'Normal', 'wpmvc-website' ),
-                            'btn-xs'        => __( 'Extra small' ),
-                            'btn-sm'        => __( 'Small' ),
-                            'btn-lg'        => __( 'Large' ),
-                            'btn-xl'        => __( 'Extra large' ),
-                            'btn-block'     => __( 'Block' ),
-                        ] ),
+            'widget' => $this,
+            'instance' => $instance,
+            'types' => apply_filters( 'wpmvc_widget_github_download_button_types', [ 'zipball' => 'Zip', 'tarball' => 'Tar.gz' ] ),
+            'colors' => apply_filters( 'wpmvc_widget_github_download_button_colors', [
+                'btn-themed' => __( 'Selected by template', 'wpmvc-website' ),
+                'btn-primary' => __( 'Cyan' ),
+                'btn-green' => __( 'Green' ),
+                'btn-blue' => __( 'Blue' ),
+                'btn-orange' => __( 'Orange' ),
+                'btn-red' => __( 'Red' ),
+                'btn-pink' => __( 'Pink' ),
+                'btn-purple' => __( 'Purple' ),
+            ] ),
+            'sizes' => apply_filters( 'wpmvc_widget_github_download_button_sizes', [
+                '' => __( 'Normal', 'wpmvc-website' ),
+                'btn-xs' => __( 'Extra small' ),
+                'btn-sm' => __( 'Small' ),
+                'btn-lg' => __( 'Large' ),
+                'btn-xl' => __( 'Extra large' ),
+                'btn-block' => __( 'Block' ),
+            ] ),
         ] );
         // ----------------
     }

@@ -3,7 +3,6 @@
 namespace WPMVCWebsite\Controllers;
 
 use WPMVC\MVC\Controller;
-
 /**
  * Shortcodes controller.
  *
@@ -27,10 +26,7 @@ class ShortcodeController extends Controller
      */
     public function docs_section( $atts, $content = '' )
     {
-        return $this->view->get( 'shortcodes.docs-section', [
-            'attributes'    => shortcode_atts( ['id' => 'step' . uniqid(), 'title' => 'Section'], $atts ),
-            'content'       => $content,
-        ] );
+        return $this->view->get( 'shortcodes.docs-section', [ 'attributes' => shortcode_atts( [ 'id' => 'step' . uniqid(), 'title' => 'Section' ], $atts ), 'content' => $content ] );
     }
     /**
      * [code-line]
@@ -45,7 +41,7 @@ class ShortcodeController extends Controller
      */
     public function code_line( $atts, $content = '' )
     {
-        return $this->view->get( 'shortcodes.code-line', ['content' => $content] );
+        return $this->view->get( 'shortcodes.code-line', [ 'content' => $content ] );
     }
     /**
      * [callout]
@@ -60,10 +56,7 @@ class ShortcodeController extends Controller
      */
     public function callout( $atts, $content = '' )
     {
-        return $this->view->get( 'shortcodes.callout', [
-            'attributes'    => shortcode_atts( ['title' => '', 'icon' => '', 'type' => 'success'], $atts ),
-            'content'       => $content,
-        ] );
+        return $this->view->get( 'shortcodes.callout', [ 'attributes' => shortcode_atts( [ 'title' => '', 'icon' => '', 'type' => 'success' ], $atts ), 'content' => $content ] );
     }
     /**
      * [youtube]
@@ -78,11 +71,13 @@ class ShortcodeController extends Controller
      */
     public function youtube( $atts, $content = '' )
     {
-        if ( ! isset( $atts['video'] ) )
+        if ( !isset( $atts['video'] ) ) {
             return;
+        }
         $ID = $this->get_youtube_id( $atts['video'] );
-        if ($ID)
-            return $this->view->get( 'shortcodes.youtube', ['ID' => $ID] );
+        if ( $ID ) {
+            return $this->view->get( 'shortcodes.youtube', [ 'ID' => $ID ] );
+        }
     }
     /**
      * Returns youtube video ID based on given url.

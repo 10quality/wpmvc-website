@@ -35,9 +35,10 @@ class AppController extends Controller
     public function sanitize_copyright( $text )
     {
         $text = trim( $text );
-        if ( empty( $text ) )
+        if ( empty( $text ) ) {
             return '';
-        return preg_replace( ['/{copy}/','/{year}/'], ['&copy;',date( 'Y' )], $text );
+        }
+        return preg_replace( [ '/{copy}/', '/{year}/' ], [ '&copy;', date( 'Y' ) ], $text );
     }
     /**
      * Returns list of available login handlers.
@@ -51,8 +52,11 @@ class AppController extends Controller
      */
     public function login_handlers( $handlers )
     {
-        if ( function_exists( 'WC' ) && get_option( 'woocommerce_myaccount_page_id', false ) )
+        if ( function_exists( 'WC' )
+            && get_option( 'woocommerce_myaccount_page_id', false )
+        ) {
             $handlers['wc'] = __( 'WooCommerce My Account', 'wpmvc-website' );
+        }
         return $handlers;
     }
     /**
@@ -75,11 +79,10 @@ class AppController extends Controller
                 return wp_login_url( get_theme_mod( 'login_redirect', true ) ? home_url( $wp->request ) : '' );
             case 'wc':
                 $myaccount = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
-                if ( empty( $myaccount ) )
+                if ( empty( $myaccount ) ) {
                     return $url;
-                return get_theme_mod( 'login_redirect', true )
-                    ? add_query_arg( ['redirect_to' => home_url( $wp->request )], $myaccount )
-                    : $myaccount;
+                }
+                return get_theme_mod( 'login_redirect', true ) ? add_query_arg( [ 'redirect_to' => home_url( $wp->request ) ], $myaccount ) : $myaccount;
         }
         return $url;
     }
@@ -126,14 +129,11 @@ class AppController extends Controller
      */
     public function sanitize_ids_string( $string )
     {
-        return implode( ',', array_filter(
-            array_map( function( $id ) {
-                return empty( $id ) ? 0 : absint( trim( $id ) );
-            }, explode( ',', $string ) ),
-            function( $id ) {
-                return ! empty( $id );
-            }
-        ) );
+        return implode( ',', array_filter( array_map( function ( $id ) {
+            return empty( $id ) ? 0 : absint( trim( $id ) );
+        }, explode( ',', $string ) ), function ( $id ) {
+            return !empty( $id );
+        } ) );
     }
     /**
      * Returns superbrose available filter types.
@@ -147,12 +147,15 @@ class AppController extends Controller
      */
     public function superbrowse_types( $types )
     {
-        if ( get_theme_mod( 'superbrowse_page', true ) )
+        if ( get_theme_mod( 'superbrowse_page', true ) ) {
             $types['page'] = get_theme_mod( 'superbrowse_page_name', __( 'Pages' ) );
-        if ( get_theme_mod( 'superbrowse_post', true ) )
+        }
+        if ( get_theme_mod( 'superbrowse_post', true ) ) {
             $types['post'] = get_theme_mod( 'superbrowse_post_name', __( 'Posts' ) );
-        if ( get_theme_mod( 'superbrowse_addon', true ) )
+        }
+        if ( get_theme_mod( 'superbrowse_addon', true ) ) {
             $types['addon'] = get_theme_mod( 'superbrowse_addon_name', __( 'Add-ons', 'wpmvc-website' ) );
+        }
         return $types;
     }
     /**
@@ -164,7 +167,7 @@ class AppController extends Controller
     public function has_logo()
     {
         $logo = get_theme_mod( 'homepage_logo', 0 );
-        return ! empty( $logo );
+        return !empty( $logo );
     }
     /**
      * Returns homepage logo url.

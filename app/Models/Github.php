@@ -5,7 +5,6 @@ namespace WPMVCWebsite\Models;
 use WPMVC\Cache;
 use WPMVC\MVC\Traits\FindTrait;
 use WPMVC\MVC\Models\OptionModel as Model;
-
 /**
  * Github credentials data model.
  *
@@ -31,20 +30,20 @@ class Github extends Model
      * @var array
      */
     protected $aliases = [
-        'client_id'     => 'func_get_client_id',
+        'client_id' => 'func_get_client_id',
         'client_secret' => 'func_get_client_secret',
-        'account'       => 'func_get_account',
-        'repo'          => 'func_get_repo',
+        'account' => 'func_get_account',
+        'repo' => 'func_get_repo',
         'authorize_url' => 'func_get_authorize_url',
-        'token_url'     => 'func_get_token_url',
-        'redirect_url'  => 'func_get_redirect_url',
-        'access_token'  => 'field_access_token',
-        'token_type'    => 'field_token_type',
-        'state'         => 'field_state',
-        'api_scope'     => 'field_scope',
-        'can_auth'      => 'func_get_can_auth',
-        'is_ready'      => 'func_get_is_ready',
-        'release'       => 'func_get_release',
+        'token_url' => 'func_get_token_url',
+        'redirect_url' => 'func_get_redirect_url',
+        'access_token' => 'field_access_token',
+        'token_type' => 'field_token_type',
+        'state' => 'field_state',
+        'api_scope' => 'field_scope',
+        'can_auth' => 'func_get_can_auth',
+        'is_ready' => 'func_get_is_ready',
+        'release' => 'func_get_release',
     ];
     /**
      * Hidden attributes.
@@ -114,12 +113,12 @@ class Github extends Model
     protected function get_authorize_url()
     {
         return add_query_arg( [
-            'client_id'     => $this->client_id,
-            'redirect_url'  => $this->redirect_url,
-            'login'         => $this->account,
-            'scope'         => theme()->config->get( 'github.scope' ),
-            'state'         => $this->state,
-            'allow_signup'  => 'true',
+            'client_id' => $this->client_id,
+            'redirect_url' => $this->redirect_url,
+            'login' => $this->account,
+            'scope' => theme()->config->get( 'github.scope' ),
+            'state' => $this->state,
+            'allow_signup' => 'true',
         ], theme()->config->get( 'github.authorize_url' ) );
     }
     /**
@@ -143,12 +142,10 @@ class Github extends Model
     protected function get_redirect_url()
     {
         $step = $this->step;
-        if ( empty( $step ) )
+        if ( empty( $step ) ) {
             $step = 'authorize';
-        return add_query_arg( [
-                'github_oauth'  => '1',
-                'github_step'   => $step,
-            ], admin_url( '/' ) );
+        }
+        return add_query_arg( [ 'github_oauth' => '1', 'github_step' => $step ], admin_url( '/' ) );
     }
     /**
      * Returns flag indicating if theme settings ara available
@@ -187,11 +184,11 @@ class Github extends Model
     {
         $this->step = 'token';
         return [
-            'client_id'         => $this->client_id,
-            'client_secret'     => $this->client_secret,
-            'code'              => $code,
-            'redirect_uri'      => $this->redirect_url,
-            'state'             => $this->state,
+            'client_id' => $this->client_id,
+            'client_secret' => $this->client_secret,
+            'code' => $code,
+            'redirect_uri' => $this->redirect_url,
+            'state' => $this->state,
         ];
     }
     /**
@@ -204,12 +201,17 @@ class Github extends Model
     {
         if ( $this->is_ready && $this->repo ) {
             $github = $this;
-            $release = Cache::remember( 'wpmvc_repo_release', 60, function() use( &$github ) {
-                $releases = $github->api( 'repos/{repo}/releases' );
-                return $releases && count( $releases ) ? $releases[0] : null;
-            } );
-            if ( empty( $release ) )
+            $release = Cache::remember( 
+                'wpmvc_repo_release',
+                60,
+                function () use( &$github ) {
+                    $releases = $github->api( 'repos/{repo}/releases' );
+                    return $releases && count( $releases ) ? $releases[0] : null;
+                }
+             );
+            if ( empty( $release ) ) {
                 Cache::forget( 'wpmvc_repo_release' );
+            }
             return $release;
         }
         return null;
@@ -226,16 +228,14 @@ class Github extends Model
      */
     public function api( $endpoint, $request = [], $method = 'GET' )
     {
-        $endpoint = str_replace( '{user}' , $this->account, $endpoint );
-        $endpoint = str_replace( '{repo}' , $this->repo, $endpoint );
-        $response = json_decode( get_curl_contents(
+        $endpoint = str_replace( '{user}', $this->account, $endpoint );
+        $endpoint = str_replace( '{repo}', $this->repo, $endpoint );
+        $response = json_decode( get_curl_contents( 
             theme()->config->get( 'github.api_url' ) . $endpoint,
             $method,
             $request,
-            [
-                'Authorization: ' . $this->token_type . ' ' . $this->access_token,
-            ]
-        ) );
+            [ 'Authorization: ' . $this->token_type . ' ' . $this->access_token ]
+         ) );
         if ( $response->message && $response->documentation_url ) {
             if ( $response->message !== 'Not Found' ) {
                 $this->access_token = null;

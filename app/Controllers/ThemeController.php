@@ -36,13 +36,13 @@ class ThemeController extends Controller
     public function menu()
     {
         register_nav_menus( [
-            'header-menu'           => __('Header Menu', 'wpmvc'),
-            'mobile-header-menu'    => __('Mobile Header Menu', 'wpmvc'),
-            'mobile-menu'           => __('Mobile Menu', 'wpmvc'),
-            'docs-menu'             => __('Documentation Menu', 'wpmvc'),
-            'footer-menu-1'         => __('Footer 1 Menu', 'wpmvc'),
-            'footer-menu-2'         => __('Footer 2 Menu', 'wpmvc'),
-            'tuto-menu'             => __('Tutorial Menu', 'wpmvc'),
+            'header-menu' => __( 'Header Menu', 'wpmvc' ),
+            'mobile-header-menu' => __( 'Mobile Header Menu', 'wpmvc' ),
+            'mobile-menu' => __( 'Mobile Menu', 'wpmvc' ),
+            'docs-menu' => __( 'Documentation Menu', 'wpmvc' ),
+            'footer-menu-1' => __( 'Footer 1 Menu', 'wpmvc' ),
+            'footer-menu-2' => __( 'Footer 2 Menu', 'wpmvc' ),
+            'tuto-menu' => __( 'Tutorial Menu', 'wpmvc' ),
         ] );
     }
     /**
@@ -72,25 +72,25 @@ class ThemeController extends Controller
     public function sidebars()
     {
         register_sidebar( [
-            'name'          => __( 'Right sidebar' ),
-            'id'            => 'wpmvc-index-right',
-            'description'   => __( 'Sidebar located on the right side of templates.', 'wpmvc-website' ),
+            'name' => __( 'Right sidebar' ),
+            'id' => 'wpmvc-index-right',
+            'description' => __( 'Sidebar located on the right side of templates.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>'
+            'after_widget' => '</div>',
         ] );
         register_sidebar( [
-            'name'          => __( 'Right sidebar (Single)' ),
-            'id'            => 'wpmvc-single-right',
-            'description'   => __( 'Sidebar located on the right side of "single" templates.', 'wpmvc-website' ),
+            'name' => __( 'Right sidebar (Single)' ),
+            'id' => 'wpmvc-single-right',
+            'description' => __( 'Sidebar located on the right side of "single" templates.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>'
+            'after_widget' => '</div>',
         ] );
         register_sidebar( [
-            'name'          => __( 'Footer' ),
-            'id'            => 'wpmvc-footer',
-            'description'   => __( 'Sidebar located at the footer of the website.', 'wpmvc-website' ),
+            'name' => __( 'Footer' ),
+            'id' => 'wpmvc-footer',
+            'description' => __( 'Sidebar located at the footer of the website.', 'wpmvc-website' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>'
+            'after_widget' => '</div>',
         ] );
     }
     /**
@@ -105,8 +105,9 @@ class ThemeController extends Controller
      */
     public function filter_nav_menu_css( $classes )
     {
-        if ( in_array( 'current-menu-item', $classes ) )
+        if ( in_array( 'current-menu-item', $classes ) ) {
             $classes[] = 'active';
+        }
         return $classes;
     }
     /**
@@ -121,12 +122,15 @@ class ThemeController extends Controller
      */
     public function index_title( $title )
     {
-        if ( is_home() )
+        if ( is_home() ) {
             return __( 'Blog' );
-        if ( is_archive() || is_tax() )
+        }
+        if ( is_archive() || is_tax() ) {
             return __( 'Archive' );
-        if ( is_search() )
+        }
+        if ( is_search() ) {
             return __( 'Search', 'wpmvc-website' );
+        }
         return $title;
     }
 }

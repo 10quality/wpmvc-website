@@ -35,11 +35,8 @@ class PageController extends Controller
      */
     public function render( $view = 'pages.default', $params = [] )
     {
-        return $this->view->get($view, array_merge([
-            'page'  => Page::find(get_the_ID()),
-        ], $params));
+        return $this->view->get( $view, array_merge( [ 'page' => Page::find( get_the_ID() ) ], $params ) );
     }
-
     /**
      * Triggers on save event to clean wp_editor input.
      * @since 1.0.0
@@ -48,28 +45,27 @@ class PageController extends Controller
      */
     public function on_save( &$page )
     {
-        $page->excerpt = Request::input('excerpt');
+        $page->excerpt = Request::input( 'excerpt' );
         // Get cards
         $cards = [];
-        $icons = Request::input('meta_card_icons', []);
-        $titles = Request::input('meta_card_titles', []);
-        $colors = Request::input('meta_card_colors', []);
-        $urls = Request::input('meta_card_urls', []);
-        $descriptions = Request::input('meta_card_descriptions', []);
-        foreach ( Request::input('meta_cards', []) as $index ) {
+        $icons = Request::input( 'meta_card_icons', [] );
+        $titles = Request::input( 'meta_card_titles', [] );
+        $colors = Request::input( 'meta_card_colors', [] );
+        $urls = Request::input( 'meta_card_urls', [] );
+        $descriptions = Request::input( 'meta_card_descriptions', [] );
+        foreach ( Request::input( 'meta_cards', [] ) as $index ) {
             $cards[] = [
-                'icon'  => isset( $icons[$index] ) ? $icons[$index] : '',
+                'icon' => isset( $icons[$index] ) ? $icons[$index] : '',
                 'title' => isset( $titles[$index] ) ? $titles[$index] : '',
                 'color' => isset( $colors[$index] ) ? $colors[$index] : '',
-                'url'   => isset( $urls[$index] ) ? $urls[$index] : '#',
+                'url' => isset( $urls[$index] ) ? $urls[$index] : '#',
                 'description' => isset( $descriptions[$index] ) ? $descriptions[$index] : '',
             ];
         }
         $page->cards = $cards;
         // Clear cache
-        Cache::forget( 'p'.$page->ID.'_color' );
+        Cache::forget( 'p' . $page->ID . '_color' );
     }
-
     /**
      * Triggers on metabox event to add custom theme color values.
      * @since 1.0.0
@@ -79,25 +75,24 @@ class PageController extends Controller
     public function on_metabox( &$page )
     {
         $page->colors = [
-            'body-blue'     => 'Blue',
-            ''              => 'Cyan',
-            'body-green'    => 'Green',
-            'body-orange'   => 'Orange',
-            'body-pink'     => 'Pink',
-            'body-purple'   => 'Purple',
-            'body-red'      => 'Red',
+            'body-blue' => 'Blue',
+            '' => 'Cyan',
+            'body-green' => 'Green',
+            'body-orange' => 'Orange',
+            'body-pink' => 'Pink',
+            'body-purple' => 'Purple',
+            'body-red' => 'Red',
         ];
         $page->card_colors = [
-            'blue'          => 'Blue',
-            'primary'       => 'Cyan',
-            'green'         => 'Green',
-            'orange'        => 'Orange',
-            'pink'          => 'Pink',
-            'purple'        => 'Purple',
-            'red'           => 'Red',
+            'blue' => 'Blue',
+            'primary' => 'Cyan',
+            'green' => 'Green',
+            'orange' => 'Orange',
+            'pink' => 'Pink',
+            'purple' => 'Purple',
+            'red' => 'Red',
         ];
     }
-
     /**
      * Returns the theme color selected for a especific page.
      * @since 1.0.0
@@ -108,15 +103,17 @@ class PageController extends Controller
      */
     public function get_color( $ID = null )
     {
-        if ( empty( $ID ) )
+        if ( empty( $ID ) ) {
             $ID = get_the_ID();
-        return Cache::remember(
-            'p'.$ID.'_color',
-            60, // Hourly
-            function() use( &$ID ) {
+        }
+        return Cache::remember( 
+            'p' . $ID . '_color',
+            60,
+            // Hourly
+            function () use( &$ID ) {
                 $page = Page::find( $ID );
                 return $page->theme_color ? $page->theme_color : '';
             }
-        );
+         );
     }
 }
