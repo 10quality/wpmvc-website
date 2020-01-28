@@ -8,7 +8,7 @@ use WPMVC\Cache;
  * ThemeController controller.
  * Generated with ayuco.
  *
- * @author Alejandro Mostajo <info@10quality.com>
+ * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
  * @version 1.1.0

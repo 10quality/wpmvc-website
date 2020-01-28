@@ -1,7 +1,7 @@
 /**
  * Superbrowse.
  *
- * @author Ale Mostajo <info@10quality.com>
+ * @author 10 Quality Studio <https://www.10quality.com/>
  * @version 1.0.8
  */
 ( function( $ ) {

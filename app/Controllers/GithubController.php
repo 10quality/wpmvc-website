@@ -9,7 +9,7 @@ use WPMVCWebsite\Models\Github;
 /**
  * Github controller.
  *
- * @author Ale Mostajo <info@10quality.com>
+ * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
  * @version 1.0.11

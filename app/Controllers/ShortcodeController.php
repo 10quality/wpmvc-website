@@ -7,7 +7,7 @@ use WPMVC\MVC\Controller;
 /**
  * Shortcodes controller.
  *
- * @author Alejandro Mostajo <info@10quality.com>
+ * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
  * @version 1.0.3

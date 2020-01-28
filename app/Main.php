@@ -8,7 +8,7 @@ use WPMVC\Bridge;
  * Bridge between Wordpress and App.
  * Class contains declaration of hooks and filters.
  *
- * @author Ale Mostajo <info@10quality.com>
+ * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
  * @version 1.0.11
