@@ -4,7 +4,7 @@
  * @author Alejandro Mostajo <info@10quality.com>
  * @package WPMVC
  * @license MIT
- * @version 1.0.6
+ * @version 1.1.1
  */
 
 'use strict';
@@ -20,6 +20,15 @@ var concat = require('gulp-concat');
 
 // Load package JSON as config file.
 var config = JSON.parse(fs.readFileSync('./package.json'));
+
+/**
+ * Custom build cleanup
+ * @since 1.1.1
+ */
+config.deletes = [
+    './builds/staging/'+config.name+'/vendor/10quality/{wp-query-builder,php-curl,php-data-model,wpmvc-addon}/tests/**/*',
+    './builds/staging/'+config.name+'/vendor/10quality/{wp-query-builder,php-curl,php-data-model,wpmvc-addon}/tests',
+];
 
 // Init WPMVC default tasks.
 wpmvc(gulp, config);
