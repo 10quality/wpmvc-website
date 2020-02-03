@@ -6,15 +6,14 @@
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.11
+ * @version 1.1.1
  */
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--><html <?php language_attributes() ?>><!--<![endif]-->  
 <head>
-    <title><?php wp_title(); ?></title>
+    <title><?php wp_title() ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -23,7 +22,8 @@
     <?php endif; ?>
     <?php wp_head() ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class() ?>>
+    <?php do_action( 'wp_body_open' ) ?>
     <div class="page-wrapper">
         <?php if ( ! is_front_page() ) : ?>
             <header id="header" class="header">

@@ -6,7 +6,7 @@
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.8
+ * @version 1.1.1
  */
 ?>
         </div><!--.site-body-->
@@ -56,6 +56,6 @@
             </small>            
         </div><!--//container-->
     </footer><!--//footer-->
-    <?php wp_footer(); ?>
+    <?php wp_footer() ?>
 </body>
 </html>
