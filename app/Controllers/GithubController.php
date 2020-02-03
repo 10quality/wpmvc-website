@@ -12,7 +12,7 @@ use WPMVCWebsite\Models\Github;
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.11
+ * @version 1.1.1
  */
 class GithubController extends Controller
 {
@@ -104,7 +104,9 @@ class GithubController extends Controller
      */
     public function dashboard_setup()
     {
-        wp_add_dashboard_widget( 'wpmvc_github', __( 'Github' ), [ &$this, 'dashboard_widget' ] );
+        if ( current_user_can( 'manage_options' ) ) {
+            wp_add_dashboard_widget( 'wpmvc_github', __( 'Github' ), [ &$this, 'dashboard_widget' ] );
+        }
     }
     /**
      * Displays dashboard widget.
