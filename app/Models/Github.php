@@ -235,8 +235,8 @@ class Github extends Model
             $method,
             $request,
             [ 'Authorization: ' . $this->token_type . ' ' . $this->access_token ]
-         ) );
-        if ( $response->message && $response->documentation_url ) {
+        ) );
+        if ( is_object( $response ) && $response->message && $response->documentation_url ) {
             if ( $response->message !== 'Not Found' ) {
                 $this->access_token = null;
                 $this->token_type = null;
