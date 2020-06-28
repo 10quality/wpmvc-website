@@ -13,7 +13,6 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var wpmvc = require('gulp-wpmvc');
-var deploybot = require('gulp-wpmvc-deploybot');
 // @since 1.0.1
 var less = require('gulp-less');
 
