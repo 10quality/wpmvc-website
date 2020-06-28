@@ -2,7 +2,7 @@
  * Superbrowse.
  *
  * @author 10 Quality Studio <https://www.10quality.com/>
- * @version 1.0.8
+ * @version 1.1.2
  */
 ( function( $ ) {
     /**
@@ -295,7 +295,7 @@
              */
             render: function()
             {
-                if ( self.data && Object.getLength( self.data ) ) {
+                if ( self.data && Object.keys( self.data ).length ) {
                     for ( var type in self.data ) {
                         // Display heading
                         if ( self.templates['heading-'+type] )
