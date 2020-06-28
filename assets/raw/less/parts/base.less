@@ -490,3 +490,34 @@ select {
         display: none;
     }
 }
+
+table {
+    border: 1px solid @color-primary;
+    margin-bottom: 20px;
+    .body-green & {
+        border-color: @color-green;
+    }
+    .body-blue & {
+        border-color: @color-blue;
+    }
+    .body-orange & {
+        border-color: @color-orange;
+    }
+    .body-pink & {
+        border-color: @color-pink;
+    }
+    .body-purple & {
+        border-color: @color-purple;
+    }
+    tbody>tr{
+        td {
+            padding: 10px;
+            border-bottom: 1px solid @light-grey;
+        }
+        &:last-child {
+            td {
+                border-bottom: none;
+            }
+        }
+    }
+}
