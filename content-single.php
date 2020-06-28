@@ -5,7 +5,7 @@
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.1.0
+ * @version 1.1.2
  */
 ?>
 <article class="post-body">
@@ -16,8 +16,8 @@
         <div class="meta">
             <div class="media">
                 <div class="media-left">
-                    <a href="<?= get_the_author_link() ?>"
-                        title="View posts by <?= get_the_author_meta( 'display_name' ) ?>"
+                    <a href="<?= esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>"
+                        title="View posts by <?= esc_attr( get_the_author_meta( 'display_name' ) ) ?>"
                     >
                         <?= get_avatar( get_the_author_meta( 'ID' ), 45 ) ?>
                     </a>
@@ -32,8 +32,8 @@
                     </div>
                     <div class="author">
                         <span> By </span>
-                        <a href="<?= get_the_author_link() ?>"
-                            title="View posts by <?= get_the_author_meta( 'display_name' ) ?>"
+                        <a href="<?= esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) ?>"
+                            title="View posts by <?= esc_attr( get_the_author_meta( 'display_name' ) ) ?>"
                             class="name"
                         >
                             <?= get_the_author_meta( 'display_name' ) ?>
