@@ -7,11 +7,13 @@
 /assets/css
 /assets/js
 /assets/fonts
-/assets/raw/css
-/assets/raw/js/external
-/assets/admin/js
-/assets/admin/raw/js/external
 
 # Generated tmp:
 /builds
+/svn
 composer.lock
+package-lock.json
+.DS_Store
+
+# Env files
+wordpress-org.json

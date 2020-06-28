@@ -28,32 +28,54 @@ return [
         'enabled'       => true,
         // Assets to auto-enqueue
         'assets'        => [
-                            [
-                                'asset'     => 'css/bootstrap.min.css',
-                                'dep'       => [],
-                                'footer'    => false,
-                            ],
-                            [
-                                'asset'     => 'css/font-awesome.min.css',
-                                'dep'       => [],
-                                'footer'    => false,
-                            ],
-                            [
-                                'asset'     => 'css/app.css',
-                                'dep'       => ['bootstrap-wpmvcwebsite', 'font-awesome-wpmvcwebsite'],
-                                'footer'    => false,
-                            ],
-                            [
-                                'asset'     => 'js/vendor.js',
-                                'dep'       => ['jquery'],
-                                'footer'    => true,
-                            ],
-                            [
-                                'asset'     => 'js/app.js',
-                                'dep'       => ['vendor-wpmvcwebsite', 'wp-api'],
-                                'footer'    => true,
-                            ],
-                        ],
+            // CSS
+            [
+                'id'        => 'bootstrap',
+                'asset'     => 'css/bootstrap.min.css',
+                'version'   => '3.4.1',
+                'flag'      => 'all',
+            ],
+            [
+                'id'        => 'font-awesome',
+                'asset'     => 'css/font-awesome.min.css',
+                'flag'      => 'all',
+            ],
+            [
+                'asset'     => 'css/app.css',
+                'dep'       => ['bootstrap', 'font-awesome'],
+                'flag'      => 'all',
+            ],
+            // JS
+            [
+                'id'        => 'bootstrap',
+                'asset'     => 'js/bootstrap.min.js',
+                'version'   => '3.4.1',
+                'footer'    => true,
+            ],
+            [
+                'id'        => 'match-height',
+                'asset'     => 'js/jquery.matchHeight-min.js',
+                'version'   => '0.7.2',
+                'footer'    => true,
+            ],
+            [
+                'id'        => 'scroll-to',
+                'asset'     => 'js/jquery.scrollTo.min.js',
+                'version'   => '2.1.2',
+                'footer'    => true,
+            ],
+            [
+                'id'        => 'clipboard',
+                'asset'     => 'js/clipboard.min.js',
+                'version'   => '2.0.6',
+                'footer'    => true,
+            ],
+            [
+                'asset'     => 'js/app.js',
+                'dep'       => ['jquery', 'bootstrap', 'match-height', 'scroll-to', 'wp-api'],
+                'footer'    => true,
+            ],
+        ],
 
     ],
 
