@@ -2,6 +2,8 @@
 
 namespace WPMVCWebsite\Models;
 
+use Exception;
+use WPMVC\Log;
 use WPMVC\Cache;
 use WPMVC\MVC\Traits\FindTrait;
 use WPMVC\MVC\Models\OptionModel as Model;
@@ -11,7 +13,7 @@ use WPMVC\MVC\Models\OptionModel as Model;
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.0.11
+ * @version 1.1.3
  */
 class Github extends Model
 {
@@ -228,23 +230,28 @@ class Github extends Model
      */
     public function api( $endpoint, $request = [], $method = 'GET' )
     {
-        $endpoint = str_replace( '{user}', $this->account, $endpoint );
-        $endpoint = str_replace( '{repo}', $this->repo, $endpoint );
-        $response = json_decode( get_curl_contents( 
-            theme()->config->get( 'github.api_url' ) . $endpoint,
-            $method,
-            $request,
-            [ 'Authorization: ' . $this->token_type . ' ' . $this->access_token ]
-        ) );
-        if ( is_object( $response ) && $response->message && $response->documentation_url ) {
-            if ( $response->message !== 'Not Found' ) {
-                $this->access_token = null;
-                $this->token_type = null;
-                $this->api_scope = null;
-                $this->save();
+        try {
+            $endpoint = str_replace( '{user}', $this->account, $endpoint );
+            $endpoint = str_replace( '{repo}', $this->repo, $endpoint );
+            $response = json_decode( get_curl_contents( 
+                theme()->config->get( 'github.api_url' ) . $endpoint,
+                $method,
+                $request,
+                [ 'Authorization: ' . $this->token_type . ' ' . $this->access_token ]
+            ) );
+            if ( is_object( $response ) && $response->message && $response->documentation_url ) {
+                if ( $response->message !== 'Not Found' ) {
+                    $this->access_token = null;
+                    $this->token_type = null;
+                    $this->api_scope = null;
+                    $this->save();
+                }
+                return null;
             }
-            return null;
+            return $response;
+        } catch ( Exception $e ) {
+            Log::error( $e );
         }
-        return $response;
+        return null;
     }
 }

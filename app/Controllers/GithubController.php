@@ -3,6 +3,7 @@
 namespace WPMVCWebsite\Controllers;
 
 use Exception;
+use WPMVC\Log;
 use WPMVC\Request;
 use WPMVC\MVC\Controller;
 use WPMVCWebsite\Models\Github;
@@ -12,7 +13,7 @@ use WPMVCWebsite\Models\Github;
  * @author 10 Quality Studio <https://www.10quality.com/>
  * @package wpmvc-website
  * @license MIT
- * @version 1.1.1
+ * @version 1.1.3
  */
 class GithubController extends Controller
 {
@@ -39,18 +40,22 @@ class GithubController extends Controller
                     ) {
                         break;
                     }
-                    // Request token
-                    $response = json_decode( get_curl_contents( 
-                        $github->token_url,
-                        'POST',
-                        $github->get_token_request( $code ),
-                        [ 'Accept: application/json' ]
-                     ) );
-                    if ( $response->access_token ) {
-                        $github->access_token = $response->access_token;
-                        $github->token_type = $response->token_type;
-                        $github->api_scope = $response->scope;
-                        $github->save();
+                    try {
+                        // Request token
+                        $response = json_decode( get_curl_contents( 
+                            $github->token_url,
+                            'POST',
+                            $github->get_token_request( $code ),
+                            [ 'Accept: application/json' ]
+                         ) );
+                        if ( $response->access_token ) {
+                            $github->access_token = $response->access_token;
+                            $github->token_type = $response->token_type;
+                            $github->api_scope = $response->scope;
+                            $github->save();
+                        }
+                    } catch ( Exception $e ) {
+                        Log::error( $e );
                     }
                     break;
             }
@@ -90,9 +95,10 @@ class GithubController extends Controller
         $github = Github::find();
         if ( $github->is_ready ) {
             $data = $github->api( 'user/repos', [ 'per_page' => 100 ] );
-            foreach ( $data as $repo ) {
-                $repos[$repo->full_name] = $repo->full_name;
-            }
+            if ( $data )
+                foreach ( $data as $repo ) {
+                    $repos[$repo->full_name] = $repo->full_name;
+                }
         }
         return $repos;
     }
